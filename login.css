@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: url("https://img.freepik.com/free-photo/scallions-peppers-garlic-shiitake-mushrooms-wooden-plate_1150-25629.jpg?w=2000&t=st=1700460833~exp=1700461433~hmac=9affc059b27d3f3ae241fb611e5566ad9bbb4197342264b7a936cc5584a6ce1b")
+    no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 300px;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #007bff;
+}
+
+.login-container input {
+  width: 90%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #0000ff;
+  border-radius: 5px;
+}
+
+.login-container button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #0056b3;
+}
+
+.header__logotext {
+  color: #fff;
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    width: 80%;
+  }
+}

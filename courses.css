@@ -1,0 +1,189 @@
+:root {
+  --primary-color: #61a3ba;
+  --secondary-color: #ffffdd;
+  --yellowish: #d2de32;
+  --greenish: #a2c579;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: var(--secondary-color);
+}
+
+header {
+  background-color: var(--greenish);
+  padding: 20px 120px 20px 104px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo img {
+  width: 35px;
+  height: 45px;
+  margin-right: 20px;
+}
+
+.header__nav {
+  display: flex;
+  gap: 20px;
+  padding-top: 10px;
+}
+
+.header__navItems {
+  list-style: none;
+}
+
+.header__navItems a {
+  text-decoration: none;
+  color: #000;
+}
+
+.btn button {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 6px;
+}
+
+.header__loginbtn {
+  color: var(--primary-color);
+}
+
+.header__signupbtn {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.penikmat h3 {
+  text-align: center;
+  padding: 20px 20px 0px 20px;
+  color: var(--primary-color);
+}
+
+.search-container {
+  background-color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px 20px 20px;
+}
+
+#search-input {
+  padding: 20px;
+  width: 500px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+}
+
+#search-btn {
+  padding: 10px 20px;
+  margin-left: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#search-btn:hover {
+  background-color: var(--greenish);
+}
+
+#all-courses {
+  width: 1200px;
+  margin: auto;
+}
+
+.judul-courses {
+  padding: 30px 20px 5px 20px;
+}
+
+.judul-courses ul li {
+  list-style: none;
+}
+
+.kelompok {
+  border: var(--primary-color) solid 2px;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  display: flex;
+}
+
+.kotak {
+  background-color: #fff;
+  width: 300px;
+  height: 250px;
+  padding: 20px;
+  border: var(--primary-color) solid 1px;
+  border-radius: 20px;
+  margin: 30px auto;
+}
+
+.kotak img {
+  width: 250px;
+  height: 150px;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+@media screen and (max-width: 914px) {
+  #all-courses {
+    width: 90%;
+    margin: auto;
+  }
+
+  .kelompok {
+    border: var(--primary-color) solid 2px;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .kotak {
+    width: 200px;
+    height: 200px;
+  }
+
+  .kotak img {
+    width: 100%;
+    height: 60%;
+  }
+}
