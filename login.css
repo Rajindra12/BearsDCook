@@ -2,8 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background: url("https://img.freepik.com/free-photo/scallions-peppers-garlic-shiitake-mushrooms-wooden-plate_1150-25629.jpg?w=2000&t=st=1700460833~exp=1700461433~hmac=9affc059b27d3f3ae241fb611e5566ad9bbb4197342264b7a936cc5584a6ce1b")
-    no-repeat center center fixed;
+  background: linear-gradient(to bottom right, #d04848, #f3b95f);
   background-size: cover;
   height: 100vh;
   display: flex;
