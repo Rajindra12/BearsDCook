@@ -10,7 +10,7 @@ body {
 }
 
 main {
-  height: 1000vh;
+  height: 100vh;
 }
 
 .container {
@@ -18,7 +18,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 70vh;
+  height: 90vh;
   width: 400px;
   margin: auto;
 }
@@ -29,21 +29,34 @@ h1 {
 }
 
 .login {
-  border: solid 2px black;
-  padding: 10px;
+  border: solid 3px black;
+  padding: 40px;
   border-radius: 10px;
   height: auto;
   width: auto;
   margin-top: -30px;
+  font-size: 20px;
 }
 
-.login input {
+.inpute {
+  color: #fff;
   margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f3b95f;
+}
+
+.buttone {
+  padding: 3px;
+  border-radius: 10px;
+  background-color: antiquewhite;
+  color: #d04848;
 }
 
 .login p {
   margin-bottom: 2px;
   margin-top: 1px;
+  font-weight: bold;
 }
 
 .forgot {
@@ -56,13 +69,13 @@ h1 {
 
 .register {
   font-family: "Merriweather";
-  font-size: 13px;
+  font-size: 15px;
   font-style: italic;
 }
 
 .forgot_pass {
   font-family: "Merriweather";
-  font-size: 13px;
+  font-size: 15px;
   font-style: italic;
 }
 
