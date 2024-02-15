@@ -1,39 +1,40 @@
-<?php
-// mengaktifkan session pada php
-session_start();
-include 'koneksi.php'
-
-$username = $_POST['username'];
-$password = $_POST['password'];
-
-$login = mysqli_query($mysqli,"select * from user where usename='$username' and password='$password'");
-$cek = mysqli_num_rows($login);
-
-if($cek > 0){
-    
-    $data = mysqli_fetch_assoc($login);
-
-    //cek jika user login sebagai admin
-    if($data['level']=="admin"){
-
-        // buat session login dan username
-        $_SESSION['username'] = $username;
-        $_SESSION['level'] = "admin";
-    
-    // cek jika usser login sebagai user
-    }elseif($data['level']=="user"){
-        // buat session login dan username
-        $_SESSION['username'] = $username;
-        $_SESSION['level'] = "user";
-        // alihkan ke halaman dashboard user
-        header("location:user/index.php");
-
-    }else{
-
-        // alihkan ke halaman login kembali
-        header("location:index.php");
-    }
-}else{
-    header("location:index.php?pesan=gagal");
-}
-?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <h1>log-in</h1>
+        <br />
+        <div class="login">
+          <form action="proseslogin.php" method="post">
+            <p>Username</p>
+            <input
+              type="text"
+              name="user"
+              placeholder="Username"
+              class="inpute"
+            />
+            <p>Password</p>
+            <input
+              type="password"
+              name="pass"
+              placeholder="Password"
+              class="inpute"
+            />
+            <button class="buttone">Login</button>
+          </form>
+          <div class="forgot">
+            <a href="register.html" class="register">Register</a>
+            <a href="#" class="forgot_pass">Forgot Password</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

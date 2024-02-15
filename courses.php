@@ -15,14 +15,18 @@
 
       <nav>
         <ul class="header__nav">
-          <li class="header__navItems"><a href="index.html">Home</a></li>
-          <li class="header__navItems"><a href="courses.html">Courses</a></li>
-          <li class="header__navItems"><a href="orangnya.html">Orangnya</a></li>
+          <li class="header__navItems"><a href="index.php
+          ">Home</a></li>
+          <li class="header__navItems"><a href="courses.php
+          ">Courses</a></li>
+          <li class="header__navItems"><a href="orangnya.php
+          ">Orangnya</a></li>
         </ul>
       </nav>
 
       <div class="btn">
-        <button class="header__loginbtn"><a href="login.html">Login</a></button>
+        <button class="header__loginbtn"><a href="login.php
+        ">Login</a></button>
         <button class="header__signupbtn">Sign Up</button>
       </div>
     </header>
@@ -62,7 +66,8 @@
             alt="gambar"
           />
           <p>Rawon</p>
-          <p><a href="rawon.html">ayo lihat resepnya</a></p>
+          <p><a href="rawon.php
+          ">ayo lihat resepnya</a></p>
         </div>
         <div class="kotak">
           <img
@@ -70,7 +75,8 @@
             alt="gambar"
           />
           <p>Rendang</p>
-          <p><a href="rendang.html">ayo lihat resepnya</a></p>
+          <p><a href="rendang.php
+          ">ayo lihat resepnya</a></p>
         </div>
       </div>
       <div class="judul-courses">

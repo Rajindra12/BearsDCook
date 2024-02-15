@@ -15,14 +15,14 @@
 
       <nav>
         <ul class="header__nav">
-          <li class="header__navItems"><a href="index.html">Home</a></li>
-          <li class="header__navItems"><a href="courses.html">Courses</a></li>
-          <li class="header__navItems"><a href="orangnya.html">Orangnya</a></li>
+          <li class="header__navItems"><a href="index.php">Home</a></li>
+          <li class="header__navItems"><a href="courses.php">Courses</a></li>
+          <li class="header__navItems"><a href="orangnya.php">Orangnya</a></li>
         </ul>
       </nav>
 
       <div class="btn">
-        <button class="header__loginbtn"><a href="login.html">Login</a></button>
+        <button class="header__loginbtn"><a href="login.php">Login</a></button>
         <button class="header__signupbtn">Sign Up</button>
       </div>
     </header>
@@ -41,42 +41,51 @@
 
     <section class="rawon">
       <div class="tulisane">
-        <h2>RESEP RENDANG</h2>
+        <h2>RESEP RAWON</h2>
         <br />
         <p>
           ### Bahan-bahan:
-          <br />- 1 kg daging sapi (potong dadu) <br />- 4 lembar daun jeruk
-          <br />- 2 batang serai (memarkan bagian putih) <br />- 4 lembar daun
-          salam <br />- 2 liter santan dari 2 butir kelapa <br />- Garam
-          secukupnya <br />- Minyak untuk menumis ### Bumbu Halus: <br />- 10
-          buah cabe merah keriting <br />- 8 buah cabe rawit (sesuai selera
-          pedasnya) <br />- 10 siung bawang merah <br />- 8 siung bawang putih
-          <br />- 2 ruas jahe <br />- 3 ruas lengkuas <br />- 4 cm kunyit b- 2
-          sdm ketumbar <br />- 1 sdm merica butiran - 5 butir kemiri
-          <br /><br />### Langkah-langkah: <br />1. Tumis bumbu halus dengan
-          sedikit minyak hingga harum dan matang. <br />2. Masukkan daging sapi,
-          aduk hingga berubah warna. <br />3. Tuangkan santan, masukkan daun
-          jeruk, serai, daun salam, dan garam. Aduk rata. <br />4. Masak rendang
-          dengan api kecil hingga santan menyusut dan bumbu meresap ke dalam
-          daging. Proses memasak ini bisa memakan waktu sekitar 3-4 jam.
-          <br />5. Aduk sesekali untuk menghindari agar tidak gosong. Pastikan
-          api kecil agar santan tidak pecah. <br />6. Setelah santan menyusut
-          dan bumbu meresap ke dalam daging, aduk perlahan hingga daging
-          berwarna kecokelatan dan berminyak. <br />7. Koreksi rasa, tambahkan
-          garam jika diperlukan. <br />8. Rendang siap disajikan! Sajikan dengan
-          nasi hangat atau ketupat. Rendang biasanya menjadi semakin enak saat
-          disajikan setelah dibiarkan semalam dan dipanaskan kembali sebelum
-          disantap. Selamat mencoba!
+          <br />- 500 gram daging sapi (potong dadu) <br />- 2 liter air <br />-
+          3 lembar daun salam <br />- 2 batang serai (memarkan) <br />- 5 cm
+          lengkuas (memarkan) <br />- 5 lembar daun jeruk <br />- Garam
+          secukupnya <br />- Gula secukupnya <br />- Minyak untuk menumis
+          <br />
+          <br />
+          ### Bumbu Halus:
+          <br />- 8 butir bawang merah <br />- 5 siung bawang putih <br />- 4
+          buah kemiri, sangrai <br />- 3 cm kunyit <br />- 4 cm jahe <br />- 1
+          sdm ketumbar <br />- ½ sdt lada hitam
+          <br />
+          <br />
+          ### Bahan Pelengkap:
+          <br />- 100 gram kacang tolo (rendam semalam, rebus hingga lunak)
+          <br />- 2 batang daun bawang (iris tipis) <br />- 2 sdm tauge (rendam
+          air panas) <br />- 4 butir telur rebus <br />- Sambal, jeruk limo, dan
+          bawang goreng sebagai pelengkap
+          <br />
+          <br />
+          ### Langkah-langkah:
+          <br />1. Tumis bumbu halus dengan minyak hingga harum dan matang.
+          <br />2. Masukkan daging sapi, aduk hingga berubah warna. <br />3.
+          Tuangkan air, masukkan daun salam, serai, lengkuas, daun jeruk, garam,
+          dan gula. Aduk rata. <br />4. Biarkan mendidih dan kecilkan api. Masak
+          hingga daging empuk dan kuah mengental, sekitar 1,5-2 jam (atau
+          gunakan panci presto untuk mempercepat proses memasak). <br />5.
+          Setelah daging empuk dan kuah mengental, cicipi dan sesuaikan rasa
+          jika diperlukan. <br />6. Sajikan rawon dengan kacang tolo, daun
+          bawang, tauge, telur rebus, sambal, jeruk limo, dan bawang goreng
+          sebagai pelengkap. Selamat mencoba! Rasanya semakin lezat jika
+          disajikan dengan nasi hangat.
         </p>
       </div>
       <div class="vidio">
         <img
-          src="https://img.freepik.com/free-photo/delicious-goulash-ready-dinner_23-2149370900.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=sph"
+          src="https://img.freepik.com/free-photo/delicious-goulash-ready-dinner_23-2149370849.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=sph"
           alt="halo"
           class="vidio_one"
         />
-        <h4 class="vidio_judul">Rendang</h4>
-        <p class="vidio_des">the best Rendang in the world</p>
+        <h4 class="vidio_judul">Rawon</h4>
+        <p class="vidio_des">the best rawon in the world</p>
         <br />
         <div class="profil">
           <img
@@ -125,15 +134,15 @@
         </div>
         <div class="kotak">
           <img
-            src="https://img.freepik.com/free-photo/delicious-goulash-ready-dinner_23-2149370849.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=sph"
+            src="https://img.freepik.com/free-photo/delicious-goulash-ready-dinner_23-2149370900.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=sph"
             alt="gambar"
           />
-          <p>Rawon</p>
-          <p><a href="rawon.html">ayo lihat resepnya</a></p>
+          <p>Rendang</p>
+          <p><a href="rendang.php">ayo lihat resepnya</a></p>
         </div>
       </div>
       <div class="balik">
-        <p><a href="courses.html">Back to Courses</a></p>
+        <p><a href="courses.php">Back to Courses</a></p>
       </div>
     </section>
 

@@ -15,14 +15,18 @@
 
       <nav>
         <ul class="header__nav">
-          <li class="header__navItems"><a href="index.html">Home</a></li>
-          <li class="header__navItems"><a href="courses.html">Courses</a></li>
-          <li class="header__navItems"><a href="orangnya.html">Orangnya</a></li>
+          <li class="header__navItems"><a href="index.php
+          ">Home</a></li>
+          <li class="header__navItems"><a href="courses.php
+          ">Courses</a></li>
+          <li class="header__navItems"><a href="orangnya.php
+          ">Orangnya</a></li>
         </ul>
       </nav>
 
       <div class="btn">
-        <button class="header__loginbtn"><a href="login.html">Login</a></button>
+        <button class="header__loginbtn"><a href="login.php
+        ">Login</a></button>
         <button class="header__signupbtn">Sign Up</button>
       </div>
     </header>
@@ -145,7 +149,7 @@
         </div>
       </div>
       <div class="balik">
-        <p><a href="courses.html">Back to Courses</a></p>
+        <p><a href="courses.php">Back to Courses</a></p>
       </div>
     </section>
 
