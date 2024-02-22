@@ -30,7 +30,7 @@
             <button class="buttone">Login</button>
           </form>
           <div class="forgot">
-            <a href="register.html" class="register">Register</a>
+            <a href="register.php" class="register">Register</a>
             <a href="#" class="forgot_pass">Forgot Password</a>
           </div>
         </div>

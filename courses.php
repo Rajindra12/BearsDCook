@@ -27,7 +27,7 @@
       <div class="btn">
         <button class="header__loginbtn"><a href="login.php
         ">Login</a></button>
-        <button class="header__signupbtn">Sign Up</button>
+        <button class="header__signupbtn"><a href="register.php">Sign-Up</a></button>
       </div>
     </header>
 
@@ -150,7 +150,7 @@
             alt="gambar"
           />
           <p>Carbonara</p>
-          <p><a href="carbonara.html">ayo lihat resepnya</a></p>
+          <p><a href="carbonara.php">ayo lihat resepnya</a></p>
         </div>
         <div class="kotak">
           <img
