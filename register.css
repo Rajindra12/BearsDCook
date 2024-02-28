@@ -28,7 +28,7 @@ h1 {
   font-family: "Times New Roman", Times, serif;
 }
 
-.signup {
+.login {
   border: solid 3px black;
   padding: 40px;
   border-radius: 10px;
@@ -46,17 +46,11 @@ h1 {
   background-color: #f3b95f;
 }
 
-.btn {
+.buttone {
   padding: 3px;
   border-radius: 10px;
   background-color: antiquewhite;
   color: #d04848;
-}
-
-.login p {
-  margin-bottom: -20px;
-  margin-top: 1px;
-  font-weight: bold;
 }
 
 .forgot {

@@ -1,30 +1,34 @@
-<?php
+<?php 
 // mengaktifkan session pada php
 session_start();
 include 'koneksi.php';
 
-$username = $_POST['user'];
-$password = $_POST['pass'];
+$username = $_POST['username'];
+$password = $_POST['password'];
 
-$login = mysqli_query($mysqli,"select * from user where usename='$username' and password='$password'");
+$login = mysqli_query($mysqli,"select * from user where username='$username'");
 $cek = mysqli_num_rows($login);
 
+//cek username
 if($cek > 0){
     
     $data = mysqli_fetch_assoc($login);
 
     //cek jika user login sebagai admin
-    if($data['level']=="admin"){
+    if($data['role']=="admin"){
 
         // buat session login dan username
         $_SESSION['username'] = $username;
-        $_SESSION['level'] = "admin";
-    
-    // cek jika usser login sebagai user
-    }elseif($data['level']=="user"){
+        $_SESSION['password'] = $password;
+        $_SESSION['role'] = "admin";
+        header("location:user/admin.php");
+        
+        // cek jika usser login sebagai user
+    }elseif($data['role']=="username"){
         // buat session login dan username
         $_SESSION['username'] = $username;
-        $_SESSION['level'] = "user";
+        $_SESSION['password'] = $password;
+        $_SESSION['role'] = "user";
         // alihkan ke halaman dashboard user
         header("location:user/index.php");
 

@@ -13,27 +13,42 @@
         <br />
         <div class="signup">
           <form action="prosesregister.php" method="post">
-            <p>Nama</p>
+            <label for="nama">Nama</label>
+            <br>
             <input
-              type="text"
-              name="nama"
-              placeholder="Username"
-              class="inpute"
-              required
-              />
-            <p>Username</p>
+            type="text"
+            name="nama"
+            placeholder="Nama"
+            class="inpute"
+            required
+            />
+            <br>
+            <label for="username">Username</label>
+            <br>
+            <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            class="inpute"
+            required
+            />
+            <br>
+            <label for="password">Password</label>
+            <br>
+            <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            class="inpute"
+            required
+            />
+            <br>
+            <label for="email">Email</label>
+            <br>
               <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              class="inpute"
-              required
-              />
-            <p>Password</p>
-              <input
-              type="password"
-              name="password"
-              placeholder="Password"
+              type="email"
+              name="email"
+              placeholder="Email"
               class="inpute"
               required
             />

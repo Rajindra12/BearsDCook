@@ -13,25 +13,28 @@
         <br />
         <div class="login">
           <form action="proseslogin.php" method="post">
-            <p>Username</p>
+            <label for="username">Username</label>
+            <br>
             <input
-              type="text"
-              name="user"
-              placeholder="Username"
-              class="inpute"
+            type="text"
+            name="username"
+            placeholder="Username"
+            class="inpute"
             />
-            <p>Password</p>
+            <br>
+            <label for="password">Password</label>
+            <br>
             <input
-              type="password"
-              name="pass"
-              placeholder="Password"
-              class="inpute"
+            type="password"
+            name="password"
+            placeholder="Password"
+            class="inpute"
             />
-            <button class="buttone">Login</button>
+            <button type="submit" class="buttone" name="submit">Login</button>
           </form>
           <div class="forgot">
             <a href="register.php" class="register">Register</a>
-            <a href="#" class="forgot_pass">Forgot Password</a>
+            <a href="index.php" class="register">Forgot Password</a>
           </div>
         </div>
       </div>

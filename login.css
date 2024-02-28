@@ -53,12 +53,6 @@ h1 {
   color: #d04848;
 }
 
-.login p {
-  margin-bottom: 2px;
-  margin-top: 1px;
-  font-weight: bold;
-}
-
 .forgot {
   margin-top: -13px;
 }
@@ -68,12 +62,6 @@ h1 {
 }
 
 .register {
-  font-family: "Merriweather";
-  font-size: 15px;
-  font-style: italic;
-}
-
-.forgot_pass {
   font-family: "Merriweather";
   font-size: 15px;
   font-style: italic;
