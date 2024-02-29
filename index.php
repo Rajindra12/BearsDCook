@@ -132,7 +132,7 @@
         <h1 class="end__text-title">Rajindra Sangkabatara Aziz</h1>
         <p class="end__text-desc">
           Saya membuat ini agar semua orang belum bisa memasak bisa belaajr
-          memasak disini
+          memasak disini <br> More of him is <a href="orangnya.php">here</a>
         </p>
       </div>
     </section>
