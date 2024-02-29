@@ -51,29 +51,14 @@ $result = mysqli_query($mysqli, $query);
         margin-right: 20px;
         }
 
-        .header__nav {
-        display: flex;
-        gap: 20px;
-        padding-top: 10px;
-        }
-
-        .header__navItems {
-        list-style: none;
-        }
-
-        .header__navItems a {
-        text-decoration: none;
-        color: #000;
+        .judul {
+            margin-top: 7px;
         }
 
         .btn button {
-        padding: 15px 25px;
+        padding: 15px 70px;
         border: none;
         border-radius: 6px;
-        }
-
-        .header__loginbtn {
-        color: var(--primary-color);
         }
 
         .header__signupbtn {
@@ -81,26 +66,16 @@ $result = mysqli_query($mysqli, $query);
         color: #fff;
         }
 
-        nav ul {
-        list-style: none;
-        padding: 0;
-        }
-
-        nav li {
-        display: inline;
-        margin-right: 20px;
-        }
-
-        nav a {
-        text-decoration: none;
-        color: #fff;
-        font-weight: bold;
+        .title {
+            text-align: center;
+            margin: 20px;
         }
 
         table {
             border-collapse: collapse;
-            width: 100%;
-            background-color:
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         th, td {
@@ -109,6 +84,31 @@ $result = mysqli_query($mysqli, $query);
             text-align: left;
             border-color: var(--greenish);
 
+        }
+
+        .update {
+            background-color: #1E90FF;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        
+        .delete {
+            background-color: #D30000;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .link {
+            text-decoration: none;
+            color: #FFFFFF;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .id {
+            font-weight: bold;
         }
         </style>
     </head>
@@ -119,21 +119,18 @@ $result = mysqli_query($mysqli, $query);
             <h1 class="header__logotext">BearDCook</h1>
         </div>
 
-        <nav>
-            <ul class="header__nav">
-            <li class="header__navItems"><a href="index.php">Home</a></li>
-            <li class="header__navItems"><a href="courses.php">Courses</a></li>
-            <li class="header__navItems"><a href="orangnya.php">Orangnya</a></li>
-            </ul>
-        </nav>
+        <div class="judul">
+            <h1>ADMIN PAGE</h1>
+        </div>
 
         <div class="btn">
-            <button class="header__loginbtn"><a href="login.php">Login</a></button>
-            <button class="header__signupbtn"><a href="register.php">Sign-Up</a></button>
+            <button class="header__signupbtn">Halo, admin</button>
         </div>
         </header>
 
-        <h2>Data Tabel</h2>
+        <hr class=pemabatas>
+
+        <h2 class="title">Data Tabel</h2>
 
         <table>
             <tr>
@@ -142,6 +139,7 @@ $result = mysqli_query($mysqli, $query);
                 <th>Email</th>
                 <th>Password</th>
                 <th>Role</th>
+                <th>Operation</th>
                 <!-- Tambahkan kolom lain sesuai kebutuhan -->
             </tr>
             <?php
@@ -149,11 +147,12 @@ $result = mysqli_query($mysqli, $query);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
-                    echo "<td>" . $row["id"] . "</td>";
+                    echo "<td class=id>" . $row["id"] . "</td>";
                     echo "<td>" . $row["nama"] . "</td>";
                     echo "<td>" . $row["password"] . "</td>";
                     echo "<td>" . $row["email"] . "</td>";
                     echo "<td>" . $row["role"] . "</td>";
+                    echo "<td>" . "<button class=update><a href=update.php?updateid=$row[id] class=link>Update</a></button>" . " " . "<button class=delete><a href=delete.php?deleteid=$row[id] class=link>Delete</a></button>" . "</td>";
 
                     // Tambahkan kolom lain sesuai kebutuhan
                     echo "</tr>";
@@ -165,9 +164,6 @@ $result = mysqli_query($mysqli, $query);
         
             ?>
         </table>
-
-        <a class = 'kembali' href="admin.php">Kembali</a>
-
     </body>
 </html>
 

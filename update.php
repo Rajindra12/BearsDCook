@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Document</title>
     <style>
-      * {
+    * {
   margin: none;
   padding: none;
 }
@@ -35,7 +35,7 @@ h1 {
   font-family: "Times New Roman", Times, serif;
 }
 
-.login {
+.signup {
   border: solid 3px black;
   padding: 40px;
   border-radius: 10px;
@@ -53,7 +53,7 @@ h1 {
   background-color: #f3b95f;
 }
 
-.buttone {
+.btn {
   padding: 3px;
   border-radius: 10px;
   background-color: antiquewhite;
@@ -68,7 +68,7 @@ h1 {
   text-decoration: none;
 }
 
-.register {
+.login {
   font-family: "Merriweather";
   font-size: 15px;
   font-style: italic;
@@ -92,16 +92,25 @@ h1 {
     width: 80%;
   }
 }
-
     </style>
   </head>
   <body>
     <main>
       <div class="container">
-        <h1>log-in</h1>
+        <h1>Sign-Up</h1>
         <br />
-        <div class="login">
-          <form action="proseslogin.php" method="post">
+        <div class="signup">
+          <form action="prosesregister.php" method="post">
+            <label for="nama">Nama</label>
+            <br>
+            <input
+            type="text"
+            name="nama"
+            placeholder="Nama"
+            class="inpute"
+            required
+            />
+            <br>
             <label for="username">Username</label>
             <br>
             <input
@@ -109,6 +118,7 @@ h1 {
             name="username"
             placeholder="Username"
             class="inpute"
+            required
             />
             <br>
             <label for="password">Password</label>
@@ -118,12 +128,22 @@ h1 {
             name="password"
             placeholder="Password"
             class="inpute"
+            required
             />
-            <button type="submit" class="buttone" name="submit">Login</button>
+            <br>
+            <label for="email">Email</label>
+            <br>
+              <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              class="inpute"
+              required
+            />
+            <button class="btn" type="submit" name="update">Update</button>
           </form>
           <div class="forgot">
-            <a href="register.php" class="register">Register</a>
-            <a href="index.php" class="register">Forgot Password</a>
+            <a href="admins.php" class="login">Back</a>
           </div>
         </div>
       </div>

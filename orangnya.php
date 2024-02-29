@@ -3,8 +3,257 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="orangnya.css" />
     <title>Courses</title>
+    <style>
+      :root {
+  --primary-color: #61a3ba;
+  --secondary-color: #ffffdd;
+  --yellowish: #d2de32;
+  --greenish: #a2c579;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #7e7e61;
+}
+
+header {
+  background-color: var(--greenish);
+  padding: 20px 120px 20px 104px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo img {
+  width: 35px;
+  height: 45px;
+  margin-right: 20px;
+}
+
+.header__nav {
+  display: flex;
+  gap: 20px;
+  padding-top: 10px;
+}
+
+.header__navItems {
+  list-style: none;
+}
+
+.header__navItems a {
+  text-decoration: none;
+  color: #000;
+}
+
+.btn button {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 6px;
+}
+
+.header__loginbtn {
+  color: var(--primary-color);
+}
+
+.header__signupbtn {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.center {
+  text-align: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://th.bing.com/th/id/OIG.R4cgOG8SSGlMEp6H.yt0?w=1024&h=1024&rs=1&pid=ImgDetMain");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 650px;
+}
+
+.intro {
+  font-size: 36px;
+  font-weight: bold;
+  position: relative;
+  top: 300px;
+  color: var(--secondary-color);
+}
+
+.intro-img {
+  height: 250px;
+  width: 250px;
+  position: relative;
+  top: 135px;
+  left: 500px;
+}
+
+.kabeh {
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+.tulisan h2 {
+  font-size: 40px;
+  padding-top: 10px;
+  color: var(--secondary-color);
+  padding-bottom: 1px;
+}
+
+.tulisan p {
+  font-size: 20px;
+  color: var(--secondary-color);
+}
+
+.need {
+  align-items: center;
+  display: flex;
+  gap: 500px;
+  margin-bottom: 25px;
+}
+
+.telepon {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.telepon img {
+  width: 75px;
+  height: 75px;
+}
+
+.telepon p {
+  font-size: 20px;
+  align-self: center;
+  color: var(--secondary-color);
+}
+
+.insta {
+  display: flex;
+  gap: 20px;
+}
+
+.insta img {
+  width: 75px;
+  height: 75px;
+}
+
+.insta p {
+  font-size: 20px;
+  align-self: center;
+  color: var(--secondary-color);
+}
+
+.email {
+  display: flex;
+  gap: 20px;
+}
+
+.email img {
+  width: 75px;
+  height: 75px;
+}
+
+.email p {
+  font-size: 20px;
+  align-self: center;
+  color: var(--secondary-color);
+}
+
+.google {
+  border: #000 solid 2px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.google a {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+
+.google a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.tabel {
+  color: var(--secondary-color);
+  margin: 0px auto 100px auto;
+  text-align: center;
+}
+
+.tabel th,
+td {
+  padding: 10px;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+@media screen and (max-width: 914px) {
+  .center {
+    height: 600px;
+  }
+  .intro {
+    font-size: 30px;
+    position: relative;
+    top: 100px;
+  }
+  .intro-img {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    top: 200px;
+    left: 150px;
+  }
+  .need {
+    align-items: center;
+    display: flex;
+    gap: 300px;
+    margin-left: 25px;
+  }
+  .telepon {
+    margin-top: 20px;
+  }
+}
+
+    </style>
   </head>
   <body>
     <header>
