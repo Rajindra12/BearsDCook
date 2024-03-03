@@ -110,6 +110,29 @@ $result = mysqli_query($mysqli, $query);
         .id {
             font-weight: bold;
         }
+
+        .logout {
+            text-align: center;
+        }
+
+        .keluar {
+            margin: 0 auto; /* This centers the element horizontally */
+            /* You can also use margin: auto; to center both horizontally and vertically */
+            background-color: var(--yellowish);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .keluars {
+            text-align: center;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .keluars:hover {
+            color: #FFF;
+            text-decoration: underline;
+        }
         </style>
     </head>
     <body>
@@ -136,8 +159,9 @@ $result = mysqli_query($mysqli, $query);
             <tr>
                 <th>ID</th>
                 <th>Nama</th>
-                <th>Email</th>
+                <th>Username</th>
                 <th>Password</th>
+                <th>Email</th>
                 <th>Role</th>
                 <th>Operation</th>
                 <!-- Tambahkan kolom lain sesuai kebutuhan -->
@@ -149,6 +173,7 @@ $result = mysqli_query($mysqli, $query);
                     echo "<tr>";
                     echo "<td class=id>" . $row["id"] . "</td>";
                     echo "<td>" . $row["nama"] . "</td>";
+                    echo "<td>" . $row["username"] . "</td>";
                     echo "<td>" . $row["password"] . "</td>";
                     echo "<td>" . $row["email"] . "</td>";
                     echo "<td>" . $row["role"] . "</td>";
@@ -164,6 +189,10 @@ $result = mysqli_query($mysqli, $query);
         
             ?>
         </table>
+        <br>
+        <div class="logout">
+            <button class="keluar"><a href="login.php" class="keluars">Log-out</a></button>
+        </div>
     </body>
 </html>
 

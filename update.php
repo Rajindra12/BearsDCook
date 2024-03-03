@@ -1,152 +1,213 @@
+<!-- Tentu, berikut adalah contoh halaman PHP yang dapat digunakan untuk menyambungkan tombol CRUD Update ke database. Saya asumsikan bahwa Anda memiliki halaman `update.php` dan bahwa Anda menggunakan formulir untuk memasukkan data yang akan diupdate. Pastikan untuk memeriksa keamanan dan validasi input sebelum menyimpan data ke database.
+
+```php -->
+<?php
+require 'koneksi.php';
+
+// Inisialisasi variabel
+$updateId = $_GET['updateid'] ?? null;
+
+// Jika updateId tidak ada, arahkan kembali ke halaman data
+if (!$updateId) {
+    header("Location: admins.php");
+    exit();
+}
+
+// Ambil data pengguna yang akan diupdate dari database
+$query = "SELECT * FROM user WHERE id = $updateId";
+$result = mysqli_query($mysqli, $query);
+
+if (!$result) {
+    die("Query failed: " . mysqli_error($mysqli));
+}
+
+if (mysqli_num_rows($result) == 0) {
+    die("Data tidak ditemukan");
+}
+
+$row = mysqli_fetch_assoc($result);
+
+// Proses form update
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nama = $_POST["nama"];
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $email = $_POST["email"];
+    $role = $_POST["role"];
+
+    // Update data ke database
+    $updateQuery = "UPDATE user SET nama='$nama', username='$username', password='$password', email='$email', role='$role' WHERE id=$updateId";
+
+    $updateResult = mysqli_query($mysqli, $updateQuery);
+
+    if (!$updateResult) {
+        die("Update failed: " . mysqli_error($mysqli));
+    }
+
+    // Redirect kembali ke halaman data setelah berhasil diupdate
+    header("Location: admins.php");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Data</title>
     <style>
+    :root {
+      --primary-color: #61a3ba;
+      --secondary-color: #ffffdd;
+      --yellowish: #d2de32;
+      --greenish: #a2c579;
+    }
     * {
-  margin: none;
-  padding: none;
-}
+      margin: none;
+      padding: none;
+    }
 
-body {
-  background-image: linear-gradient(to bottom right, #d04848, #f3b95f);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+    body {
+      background-image: linear-gradient(to bottom right, #211C6A, #59B4C3);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
 
-main {
-  height: 100vh;
-}
+    main {
+      height: 100vh;
+    }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
-  width: 400px;
-  margin: auto;
-}
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+      width: 400px;
+      margin: auto;
+    }
 
-h1 {
-  font-size: 30px;
-  font-family: "Times New Roman", Times, serif;
-}
+    h1 {
+      font-size: 30px;
+      font-family: "Times New Roman", Times, serif;
+      color: #FFF;
+    }
 
-.signup {
-  border: solid 3px black;
-  padding: 40px;
-  border-radius: 10px;
-  height: auto;
-  width: auto;
-  margin-top: -30px;
-  font-size: 20px;
-}
+    label {
+      color: #FFF;
+    }
 
-.inpute {
-  color: #fff;
-  margin-bottom: 15px;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: #f3b95f;
-}
+    .update {
+      border: solid 3px black;
+      padding: 40px;
+      border-radius: 10px;
+      height: auto;
+      width: auto;
+      margin-top: -30px;
+      font-size: 20px;
+    }
 
-.btn {
-  padding: 3px;
-  border-radius: 10px;
-  background-color: antiquewhite;
-  color: #d04848;
-}
+    .inpute {
+      color: #000;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 10px;
+      border: solid 1px #000;
+      background-color: #EFF396;
+    }
 
-.forgot {
-  margin-top: -13px;
-}
+    .btn {
+      padding: 3px;
+      border-radius: 10px;
+      background-color: #EFF396;
+      color: var(--greenish);
+    }
 
-.forgot a {
-  text-decoration: none;
-}
+    .forgot {
+      margin-top: -13px;
+    }
 
-.login {
-  font-family: "Merriweather";
-  font-size: 15px;
-  font-style: italic;
-}
+    .forgot a {
+      text-decoration: none;
+    }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
+    .login {
+      font-family: "Merriweather";
+      font-size: 15px;
+      font-style: italic;
+    }
 
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background: #666;
-}
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
 
-::-webkit-scrollbar-thumb {
-  background: #232323;
-}
+    ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background: #666;
+    }
 
-@media (max-width: 480px) {
-  .login-container {
-    width: 80%;
-  }
-}
+    ::-webkit-scrollbar-thumb {
+      background: #232323;
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        width: 80%;
+      }
+    }
     </style>
-  </head>
-  <body>
-    <main>
-      <div class="container">
-        <h1>Sign-Up</h1>
-        <br />
-        <div class="signup">
-          <form action="prosesregister.php" method="post">
-            <label for="nama">Nama</label>
-            <br>
-            <input
-            type="text"
-            name="nama"
-            placeholder="Nama"
-            class="inpute"
-            required
-            />
-            <br>
-            <label for="username">Username</label>
-            <br>
-            <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            class="inpute"
-            required
-            />
-            <br>
-            <label for="password">Password</label>
-            <br>
-            <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            class="inpute"
-            required
-            />
-            <br>
-            <label for="email">Email</label>
-            <br>
-              <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              class="inpute"
-              required
-            />
-            <button class="btn" type="submit" name="update">Update</button>
-          </form>
+</head>
+<body>
+  <main>
+    <div class="container">
+      <h1>Update Data</h1>
+      <br>
+      <form class="update" method="post">
+          <label for="nama">Nama:</label>
+          <br>
+          <input class="inpute" type="text" name="nama" value="<?php echo $row['nama']; ?>" required>
+          <br>
+    
+          <label for="username">Username:</label>
+          <br>
+          <input class="inpute" type="text" name="username" value="<?php echo $row['username']; ?>" required>
+          <br>
+    
+          <label for="password">Password:</label>
+          <br>
+          <input class="inpute" type="password" name="password" value="<?php echo $row['password']; ?>" required>
+          <br>
+    
+          <label for="email">Email:</label>
+          <br>
+          <input class="inpute" type="email" name="email" value="<?php echo $row['email']; ?>" required>
+
+          <br>
+
+          <label for="role">Role:</label>
+          <br>
+          <select class="inpute" name="role">
+              <option value="admin" <?php echo ($row['role'] == 'admin') ? 'selected' : ''; ?>>admin</option>
+              <option value="user" <?php echo ($row['role'] == 'user') ? 'selected' : ''; ?>>user</option>
+          </select>
+    
+          <button class="btn" type="submit">Update</button>
+          <br>
           <div class="forgot">
-            <a href="admins.php" class="login">Back</a>
+            <a href="admins.php" class="login">kembali</a>
           </div>
-        </div>
-      </div>
-    </main>
-  </body>
+      </form>
+    </div>
+  </main>
+</body>
 </html>
+
+<?php
+// Tutup koneksi database
+mysqli_close($mysqli);
+?>
+```
+
+<!-- Pastikan Anda sudah mengganti nama kolom dan tabel sesuai dengan struktur database Anda. Selain itu, pastikan untuk menambahkan fitur keamanan dan validasi input sesuai kebutuhan aplikasi Anda. -->
