@@ -6,7 +6,7 @@ include 'koneksi.php';
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$login = mysqli_query($mysqli,"select * from user where username='$username'");
+$login = mysqli_query($mysqli,"select * from user where username='$username' AND password='$password'");
 $cek = mysqli_num_rows($login);
 
 //cek username
@@ -24,7 +24,7 @@ if($cek > 0){
         header("location:admins.php");
         
         // cek jika usser login sebagai user
-    }elseif($data['role']=="username"){
+    }elseif($data['role']=="user"){
         // buat session login dan username
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $password;
@@ -33,9 +33,8 @@ if($cek > 0){
         header("location:user/index.php");
 
     }else{
-
         // alihkan ke halaman login kembali
-        header("location:index.php");
+        header("location:login.php");
     }
 }else{
     header("location:login.php?pesan=gagal");
