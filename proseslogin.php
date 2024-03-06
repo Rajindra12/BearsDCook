@@ -21,6 +21,7 @@ if($cek > 0){
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $password;
         $_SESSION['role'] = "admin";
+
         header("location:admins.php");
         
         // cek jika usser login sebagai user
@@ -37,6 +38,6 @@ if($cek > 0){
         header("location:login.php");
     }
 }else{
-    header("location:login.php?pesan=gagal");
+    header("location:login.php");
 }
 ?>

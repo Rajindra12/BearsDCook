@@ -206,12 +206,9 @@ footer {
 
       <nav>
         <ul class="header__nav">
-          <li class="header__navItems"><a href="index.php
-          ">Home</a></li>
-          <li class="header__navItems"><a href="courses.php
-          ">Courses</a></li>
-          <li class="header__navItems"><a href="orangnya.php
-          ">Orangnya</a></li>
+          <li class="header__navItems"><a href="index.php">Home</a></li>
+          <li class="header__navItems"><a href="courses.php">Courses</a></li>
+          <li class="header__navItems"><a href="profil.php">Profil</a></li>
         </ul>
       </nav>
 
