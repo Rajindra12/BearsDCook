@@ -7,7 +7,7 @@ if(isset($_GET['deleteid'])){
     $result=mysqli_query($mysqli,$sql);
     if($result){
         // echo "Deleted successfull";
-        header('location:admins.php');
+        header('location:admin/admins.php');
     }else{
         die(mysqli_error($mysqli));
     }

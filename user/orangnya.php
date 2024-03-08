@@ -256,7 +256,7 @@ footer {
     </style>
   </head>
   <body>
-    <header>
+  <header>
       <div class="header__logo">
         <img src="bahan\goofyahh.png" alt="logo" />
         <h1 class="header__logotext">BearDCook</h1>
@@ -264,15 +264,15 @@ footer {
 
       <nav>
         <ul class="header__nav">
-          <li class="header__navItems"><a href="index.php">Home</a></li>
-          <li class="header__navItems"><a href="courses.php">Courses</a></li>
-          <li class="header__navItems"><a href="profil.php">Profil</a></li>
+          <li class="header__navItems"><a href="user/index.php">Home</a></li>
+          <li class="header__navItems"><a href="user/courses.php">Courses</a></li>
+          <li class="header__navItems"><a href="user/profil.php">Profil</a></li>
         </ul>
       </nav>
 
       <div class="btn">
-        <button class="header__loginbtn"><a href="login.php">Login</a></button>
-        <button class="header__signupbtn"><a href="register.php">Sign-Up</a></button>
+        <button class="header__loginbtn"><a href="user/login.php">Login</a></button>
+        <button class="header__signupbtn"><a href="user/register.php">Sign Up</a></button>
       </div>
     </header>
 

@@ -23,7 +23,7 @@
 
       <div class="btn">
         <button class="header__loginbtn"><a href="login.php">Login</a></button>
-        <button class="header__signupbtn">Sign Up</button>
+        <button class="header__signupbtn"><a href="register.php">Sign Up</a></button>
       </div>
     </header>
 

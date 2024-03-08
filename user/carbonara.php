@@ -15,11 +15,11 @@
 
       <nav>
         <ul class="header__nav">
-          <li class="header__navItems"><a href="index.php
+          <li class="header__navItems"><a href="user/index.php
           ">Home</a></li>
-          <li class="header__navItems"><a href="courses.php
+          <li class="header__navItems"><a href="user/courses.php
           ">Courses</a></li>
-          <li class="header__navItems"><a href="profil.php
+          <li class="header__navItems"><a href="user/profil.php
           ">Profil</a></li>
         </ul>
       </nav>

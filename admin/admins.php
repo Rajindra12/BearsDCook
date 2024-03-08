@@ -191,7 +191,7 @@ $result = mysqli_query($mysqli, $query);
         </table>
         <br>
         <div class="logout">
-            <button class="keluar"><a href="login.php" class="keluars">Log-out</a></button>
+            <button class="keluar"><a href="user/login.php" class="keluars">Log-out</a></button>
             <button><a href="">Add user</a></button>
         </div>
     </body>

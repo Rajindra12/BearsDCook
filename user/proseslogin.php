@@ -22,7 +22,7 @@ if($cek > 0){
         $_SESSION['password'] = $password;
         $_SESSION['role'] = "admin";
 
-        header("location:admins.php");
+        header("location:admin/admins.php");
         
         // cek jika usser login sebagai user
     }elseif($data['role']=="user"){
@@ -31,7 +31,7 @@ if($cek > 0){
         $_SESSION['password'] = $password;
         $_SESSION['role'] = "user";
         // alihkan ke halaman dashboard user
-        header("location:user/index.php");
+        header("location:index.php");
 
     }else{
         // alihkan ke halaman login kembali

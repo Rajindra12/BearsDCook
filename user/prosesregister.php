@@ -15,6 +15,6 @@ if(isset($_POST['Submit'])) {
     
     // Show message when user added
     // echo "Data added successfully. <a href='index.php'>View Data Buku</a>";
-    header("location: index.php");
+    header("location: user/index.php");
 }
 ?>
