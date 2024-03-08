@@ -9,7 +9,7 @@
   <body>
     <header>
       <div class="header__logo">
-        <img src="bahan\goofyahh.png" alt="logo" />
+        <img src="bahan/goofyahh.png" alt="logo" />
         <h1 class="header__logotext">BearDCook</h1>
       </div>
 
