@@ -157,7 +157,7 @@ $result = mysqli_query($mysqli, $query);
 
         <table>
             <tr>
-                <th>ID</th>
+                <th>ID_user</th>
                 <th>Nama</th>
                 <th>Username</th>
                 <th>Password</th>
@@ -171,13 +171,13 @@ $result = mysqli_query($mysqli, $query);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
-                    echo "<td class=id>" . $row["id"] . "</td>";
+                    echo "<td class=id>" . $row["id_user"] . "</td>";
                     echo "<td>" . $row["nama"] . "</td>";
                     echo "<td>" . $row["username"] . "</td>";
                     echo "<td>" . $row["password"] . "</td>";
                     echo "<td>" . $row["email"] . "</td>";
                     echo "<td>" . $row["role"] . "</td>";
-                    echo "<td>" . "<button class=update><a href=update.php?updateid=$row[id] class=link>Update</a></button>" . " " . "<button class=delete><a href=delete.php?deleteid=$row[id] class=link>Delete</a></button>" . "</td>";
+                    echo "<td>" . "<button class=update><a href=update.php?updateid=$row[id_user] class=link>Update</a></button>" . " " . "<button class=delete><a href=delete.php?deleteid=$row[id_user] class=link>Delete</a></button>" . "</td>";
 
                     // Tambahkan kolom lain sesuai kebutuhan
                     echo "</tr>";
@@ -192,6 +192,7 @@ $result = mysqli_query($mysqli, $query);
         <br>
         <div class="logout">
             <button class="keluar"><a href="login.php" class="keluars">Log-out</a></button>
+            <button><a href="">Add user</a></button>
         </div>
     </body>
 </html>
