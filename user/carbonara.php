@@ -15,11 +15,11 @@
 
       <nav>
         <ul class="header__nav">
-          <li class="header__navItems"><a href="user/index.php
+          <li class="header__navItems"><a href="index.php
           ">Home</a></li>
-          <li class="header__navItems"><a href="user/courses.php
+          <li class="header__navItems"><a href="courses.php
           ">Courses</a></li>
-          <li class="header__navItems"><a href="user/profil.php
+          <li class="header__navItems"><a href="profil.php
           ">Profil</a></li>
         </ul>
       </nav>
@@ -27,7 +27,7 @@
       <div class="btn">
         <button class="header__loginbtn"><a href="login.php
         ">Login</a></button>
-        <button class="header__signupbtn">Sign Up</button>
+        <button class="header__signupbtn"><a href="register.php">Sign Up</a></button>
       </div>
     </header>
 
