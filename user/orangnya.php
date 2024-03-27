@@ -91,7 +91,7 @@ nav a {
 .center {
   text-align: center;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://th.bing.com/th/id/OIG.R4cgOG8SSGlMEp6H.yt0?w=1024&h=1024&rs=1&pid=ImgDetMain");
+    url("../bahan/_b77a65fe-023b-4ddb-abd3-4ab52d2a8478.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -258,7 +258,7 @@ footer {
   <body>
   <header>
       <div class="header__logo">
-        <img src="bahan\goofyahh.png" alt="logo" />
+        <img src="../bahan/goofyahh.png" alt="logo" />
         <h1 class="header__logotext">BearDCook</h1>
       </div>
 
@@ -280,7 +280,7 @@ footer {
       <p class="intro">Hi, I'm Rajindra Sangkabatara Aziz,</p>
       <p class="intro">a Student from SMK Telkom Sidoarjo.</p>
       <img
-        src="bahan\PhotoRoom-20231102_084531.png"
+        src="../bahan/PhotoRoom-20231102_084531.png"
         alt="Dia"
         class="intro-img"
       />
@@ -296,19 +296,19 @@ footer {
       <div class="need">
         <div class="contact">
           <div class="telepon">
-            <img src="bahan\call.png" alt="Dia" />
+            <img src="../bahan/call.png" alt="Dia" />
             <p>+62-811-3433-006</p>
           </div>
           <div class="telepon">
-            <img src="bahan\whatsapp.png" alt="Dia" />
+            <img src="../bahan/whatsapp.png" alt="Dia" />
             <p>+62-811-3433-006</p>
           </div>
           <div class="insta">
-            <img src="bahan\instagram-logo.png" alt="Dia" />
+            <img src="../bahan/instagram-logo.png" alt="Dia" />
             <p>rajindra_a</p>
           </div>
           <div class="email">
-            <img src="bahan\mail.png" alt="Dia" />
+            <img src="../bahan/mail.png" alt="Dia" />
             <p>jindra.aziz@gmail.com</p>
           </div>
         </div>

@@ -58,18 +58,13 @@ header {
 }
 
 .btn button {
-  padding: 15px 25px;
+  padding: 15px 70px;
   border: none;
   border-radius: 6px;
 }
 
 .header__loginbtn {
   color: var(--primary-color);
-}
-
-.header__signupbtn {
-  background-color: var(--primary-color);
-  color: #fff;
 }
 
 nav ul {
@@ -269,14 +264,13 @@ footer {
       <nav>
         <ul class="header__nav">
           <li class="header__navItems"><a href="index.php">Home</a></li>
-          <li class="header__navItems"><a href="courses.php">Courses</a></li>
-          <li class="header__navItems"><a href="profil.php">Profil</a></li>
+          <li class="header__navItems"><a href="feedback.php">Feedback</a></li>
+          <li class="header__navItems"><a href="admins.php">CRUD</a></li>
         </ul>
       </nav>
 
       <div class="btn">
-        <button class="header__loginbtn"><a href="login.php">Login</a></button>
-        <button class="header__signupbtn"><a href="register.php">Sign-Up</a></button>
+        <button class="header__loginbtn"><a href="../user/login.php">Log-out</a></button>
       </div>
     </header>
 
@@ -384,8 +378,8 @@ footer {
         <p class="end__text-desc">Yang buat namanya...</p>
         <h1 class="end__text-title">Rajindra Sangkabatara Aziz</h1>
         <p class="end__text-desc">
-          Dia membuat ini agar semua orang yang belum bisa memasak bisa belajar
-          memasak disini <br> More of him is <a href="orangnya.php">here</a> and support him <a href="feedback.php">here</a>
+          Saya membuat ini agar semua orang belum bisa memasak bisa belaajr
+          memasak disini <br> More of him is <a href="orangnya.php">here</a>
         </p>
       </div>
     </section>

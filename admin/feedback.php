@@ -1,3 +1,12 @@
+<?php
+
+require '../koneksi.php';
+
+// Lakukan query
+$query = "SELECT * FROM feedback";
+$result = mysqli_query($mysqli, $query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -58,18 +67,13 @@ header {
 }
 
 .btn button {
-  padding: 15px 25px;
+  padding: 15px 70px;
   border: none;
   border-radius: 6px;
 }
 
 .header__loginbtn {
   color: var(--primary-color);
-}
-
-.header__signupbtn {
-  background-color: var(--primary-color);
-  color: #fff;
 }
 
 nav ul {
@@ -213,7 +217,7 @@ nav a {
   align-items: center;
   padding: 130px 144px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("bahan\_b77a65fe-023b-4ddb-abd3-4ab52d2a8478.jpeg");
+    url("../bahan/_b77a65fe-023b-4ddb-abd3-4ab52d2a8478.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -262,136 +266,57 @@ footer {
   <body>
     <header>
       <div class="header__logo">
-        <img src="bahan\goofyahh.png" alt="logo" />
+        <img src="../bahan/goofyahh.png" alt="logo" />
         <h1 class="header__logotext">BearDCook</h1>
       </div>
 
       <nav>
         <ul class="header__nav">
           <li class="header__navItems"><a href="index.php">Home</a></li>
-          <li class="header__navItems"><a href="courses.php">Courses</a></li>
-          <li class="header__navItems"><a href="profil.php">Profil</a></li>
+          <li class="header__navItems"><a href="feedback.php">Feedback</a></li>
+          <li class="header__navItems"><a href="admins.php">CRUD</a></li>
         </ul>
       </nav>
 
       <div class="btn">
-        <button class="header__loginbtn"><a href="login.php">Login</a></button>
-        <button class="header__signupbtn"><a href="register.php">Sign-Up</a></button>
+        <button class="header__loginbtn"><a href="../user/login.php">Log-out</a></button>
       </div>
     </header>
 
-    <hr />
+    <hr>
 
-    <section class="hero">
-      <div class="hero__text">
-        <h1 class="hero__text-title">Welcome Chefss</h1>
-        <p class="hero__text-desc">
-          Explore a wide range of courses to enhance your skills and knowledge
-          about cooking.
-        </p>
-      </div>
+    <h2>Feedback</h2>
 
-      <div class="hero__image">
-        <img src="bahan\goofyahh.png" alt="logo" />
-      </div>
-    </section>
+    <table>
+        <tr>
+            <th>ID_user</th>
+            <th>Nama</th>
+            <th>Komentar</th>
+            <th>Bintang</th>
+        </tr>
+        <?php
+            // Tampilkan data dari hasil query
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td class=id>" . $row["id_ulasan"] . "</td>";
+                    echo "<td>" . $row["id_ulasan"] . "</td>";
+                    echo "<td>" . $row["komentar"] . "</td>";
+                    echo "<td>" . $row["bintang"] . "</td>";
+                    // Tambahkan kolom lain sesuai kebutuhan
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='3'>Tidak ada data yang ditemukan</td></tr>";
+            }
 
-    <hr />
-
-    <div class="cari">
-      <h3>Lets search for foods and drinks</h3>
-      <div id="search-bar">
-        <div class="search-container">
-          <input type="text" id="search-input" placeholder="Search..." />
-          <button id="search-btn">Search</button>
-        </div>
-      </div>
-    </div>
-
-    <hr />
-
-    <section id="featured-courses">
-      <div class="one">
-        <img
-          src="https://img.freepik.com/free-photo/side-view-club-sandwich-with-salted-cucumbers-lemon-olives-round-white-plate_176474-3049.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=ais"
-          alt="gamabar"
-          width="150"
-          height="100"
-        />
-        <div class="kumpulan">
-          <h3>Sandwich</h3>
-          <p>The best of the best</p>
-          <br />
-          <p><a href="">ayo lihat resepnya</a></p>
-        </div>
-      </div>
-      <div class="one">
-        <img
-          src="https://img.freepik.com/free-photo/bbq-grill-cooked-with-hot-spicy-sichuan-pepper-sauce-is-chinese-herb_1150-13495.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=sph"
-          alt="gamabar"
-          width="150"
-          height="100"
-        />
-        <div class="kumpulan">
-          <h3>Sate</h3>
-          <p>Resep kelas kakap</p>
-          <br />
-          <p><a href="">ayo lihat resepnya</a></p>
-        </div>
-      </div>
-      <div class="one">
-        <img
-          src="https://img.freepik.com/free-photo/delicious-pasta-plate_23-2150690687.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=sph"
-          alt="gamabar"
-          width="150"
-          height="100"
-        />
-        <div class="kumpulan">
-          <h3>Carbonara</h3>
-          <p>Very good carbonara</p>
-          <br />
-          <p><a href="carbonara.php">ayo lihat resepnya</a></p>
-        </div>
-      </div>
-      <div class="one">
-        <img
-          src="https://img.freepik.com/free-photo/delicious-goulash-ready-dinner_23-2149370849.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=sph"
-          alt="gamabar"
-          width="150"
-          height="100"
-        />
-        <div class="kumpulan">
-          <h3>Rawon</h3>
-          <p>kalau Mau boleh lihat</p>
-          <br />
-          <p><a href="rawon.php">ayo lihat resepnya</a></p>
-        </div>
-      </div>
-    </section>
-    <section id="featured-tulisan">
-      <p>
-        <a href="courses.php"
-          >Want More, click here <br />
-          trust me, it doesn't bite</a
-        >
-      </p>
-    </section>
-
-    <hr />
-
-    <section class="end">
-      <div class="end__text">
-        <p class="end__text-desc">Yang buat namanya...</p>
-        <h1 class="end__text-title">Rajindra Sangkabatara Aziz</h1>
-        <p class="end__text-desc">
-          Saya membuat ini agar semua orang belum bisa memasak bisa belaajr
-          memasak disini <br> More of him is <a href="orangnya.php">here</a>
-        </p>
-      </div>
-    </section>
-
-    <footer>
-      <p>&copy; 2023 Online Courses Platform. All rights reserved.</p>
-    </footer>
-  </body>
+        
+            ?>
+        </table>
+    </body>
 </html>
+
+    <?php
+    // Tutup koneksi database
+    mysqli_close($mysqli);
+    ?>

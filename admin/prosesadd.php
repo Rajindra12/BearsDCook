@@ -1,6 +1,6 @@
 <?php
             // Check If form submitted, insert form data into users table.
-if(isset($_POST['Submit'])) {
+if(isset($_POST['add'])) {
     $namas= $_POST['nama']; 
     $usernames = $_POST['username']; 
     $passwords = $_POST['password']; 
@@ -15,6 +15,6 @@ if(isset($_POST['Submit'])) {
     
     // Show message when user added
     // echo "Data added successfully. <a href='index.php'>View Data Buku</a>";
-    header("location: user/index.php");
+    header("location: index.php");
 }
 ?>

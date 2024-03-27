@@ -1,6 +1,6 @@
 <?php
 
-require 'koneksi.php';
+require '../koneksi.php';
 
 // Lakukan query
 $query = "SELECT * FROM user";
@@ -51,8 +51,19 @@ $result = mysqli_query($mysqli, $query);
         margin-right: 20px;
         }
 
-        .judul {
-            margin-top: 7px;
+        .header__nav {
+        display: flex;
+        gap: 20px;
+        padding-top: 10px;
+        }
+
+        .header__navItems {
+        list-style: none;
+        }
+
+        .header__navItems a {
+        text-decoration: none;
+        color: #000;
         }
 
         .btn button {
@@ -61,9 +72,28 @@ $result = mysqli_query($mysqli, $query);
         border-radius: 6px;
         }
 
-        .header__signupbtn {
-        background-color: var(--primary-color);
+        .header__loginbtn {
+        color: var(--primary-color);
+        }
+
+        nav ul {
+        list-style: none;
+        padding: 0;
+        }
+
+        nav li {
+        display: inline;
+        margin-right: 20px;
+        }
+
+        nav a {
+        text-decoration: none;
         color: #fff;
+        font-weight: bold;
+        }
+
+        .judul {
+            margin-top: 7px;
         }
 
         .title {
@@ -133,23 +163,46 @@ $result = mysqli_query($mysqli, $query);
             color: #FFF;
             text-decoration: underline;
         }
+
+        .plus {
+            margin: 0 auto; /* This centers the element horizontally */
+            /* You can also use margin: auto; to center both horizontally and vertically */
+            background-color: var(--yellowish);
+            padding: 5px;
+            border-radius: 5px;
+        }
+        
+        .pluss {
+            text-align: center;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .pluss:hover {
+            color: #FFF;
+            text-decoration: underline;
+        }
         </style>
     </head>
     <body>
-        <header>
-        <div class="header__logo">
-            <img src="bahan\goofyahh.png" alt="logo" />
-            <h1 class="header__logotext">BearDCook</h1>
-        </div>
+    <header>
+      <div class="header__logo">
+        <img src="../bahan/goofyahh.png" alt="logo" />
+        <h1 class="header__logotext">BearDCook</h1>
+      </div>
 
-        <div class="judul">
-            <h1>ADMIN PAGE</h1>
-        </div>
+      <nav>
+        <ul class="header__nav">
+          <li class="header__navItems"><a href="index.php">Home</a></li>
+          <li class="header__navItems"><a href="feedback.php">Feedback</a></li>
+          <li class="header__navItems"><a href="admins.php">CRUD</a></li>
+        </ul>
+      </nav>
 
-        <div class="btn">
-            <button class="header__signupbtn">Halo, admin</button>
-        </div>
-        </header>
+      <div class="btn">
+        <button class="header__loginbtn"><a href="../user/login.php">Log-out</a></button>
+      </div>
+    </header>
 
         <hr class=pemabatas>
 
@@ -191,8 +244,8 @@ $result = mysqli_query($mysqli, $query);
         </table>
         <br>
         <div class="logout">
-            <button class="keluar"><a href="user/login.php" class="keluars">Log-out</a></button>
-            <button><a href="">Add user</a></button>
+            <button class="keluar"><a href="../user/login.php" class="keluars">Log-out</a></button>
+            <button class="plus"><a href="add.php" class="pluss">Add user</a></button>
         </div>
     </body>
 </html>

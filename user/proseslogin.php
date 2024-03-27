@@ -1,7 +1,7 @@
 <?php 
 // mengaktifkan session pada php
 session_start();
-include 'koneksi.php';
+include '../koneksi.php';
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -22,7 +22,7 @@ if($cek > 0){
         $_SESSION['password'] = $password;
         $_SESSION['role'] = "admin";
 
-        header("location:admin/admins.php");
+        header("location:../admin/index.php");
         
         // cek jika usser login sebagai user
     }elseif($data['role']=="user"){
