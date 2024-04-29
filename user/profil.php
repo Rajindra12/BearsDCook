@@ -121,6 +121,11 @@ footer {
       </div>
     </header>
 
+    <container>
+      <h1>Your Profile</h1>
+      
+    </container>
+
     <footer>
       <p>&copy; 2023 Online Courses Platform. All rights reserved.</p>
     </footer>
