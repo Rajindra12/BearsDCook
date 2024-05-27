@@ -121,7 +121,7 @@ input::placeholder {
         <h1>log-in</h1>
         <br />
         <div class="login">
-          <form action="proseslogin.php" method="post">
+          <form action="proseslogin.php" method="post" enctype="multipart/form-data">
             <label for="username">Username</label>
             <br>
             <input
@@ -129,6 +129,8 @@ input::placeholder {
             name="username"
             placeholder="Username"
             class="inpute"
+            required
+            autofocus
             />
             <br>
             <label for="password">Password</label>
@@ -138,6 +140,7 @@ input::placeholder {
             name="password"
             placeholder="Password"
             class="inpute"
+            required
             />
             <button type="submit" class="buttone" name="submit">Login</button>
           </form>

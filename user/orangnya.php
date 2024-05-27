@@ -261,19 +261,15 @@ footer {
         <img src="../bahan/goofyahh.png" alt="logo" />
         <h1 class="header__logotext">BearDCook</h1>
       </div>
-
+      
       <nav>
         <ul class="header__nav">
-          <li class="header__navItems"><a href="user/index.php">Home</a></li>
-          <li class="header__navItems"><a href="user/courses.php">Courses</a></li>
-          <li class="header__navItems"><a href="user/profil.php">Profil</a></li>
+          <li class="header__navItems"><a href="index.php">Home</a></li>
+          <li class="header__navItems"><a href="courses.php">Courses</a></li>
+          <li class="header__navItems"><a href="profil.php">Profil</a></li>
+          <li class="header__navItems"><a href="logout.php">logout</a></li>
         </ul>
       </nav>
-
-      <div class="btn">
-        <button class="header__loginbtn"><a href="user/login.php">Login</a></button>
-        <button class="header__signupbtn"><a href="user/register.php">Sign Up</a></button>
-      </div>
     </header>
 
     <div class="center">

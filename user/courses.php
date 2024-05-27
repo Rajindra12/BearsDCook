@@ -88,7 +88,7 @@ nav a {
   font-weight: bold;
 }
 
-.penikmat h3 {
+.cari h3 {
   text-align: center;
   padding: 20px 20px 0px 20px;
   color: var(--primary-color);
@@ -105,7 +105,7 @@ nav a {
 #search-input {
   padding: 20px;
   width: 500px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--primary-color);
   border-radius: 10px;
   outline: none;
 }
@@ -124,40 +124,45 @@ nav a {
   background-color: var(--greenish);
 }
 
-#all-courses {
-  width: 1200px;
-  margin: auto;
-  margin-bottom: 75px;
+.judul_halaman {
+    text-align: center;
+    color: var(--primary-color);
+    margin: 30px 0 30px 0;
+    font-weight: bold;
+    font-size: 30px;
 }
 
-.judul-courses {
-  padding: 30px 20px 5px 20px;
-}
-
-.judul-courses ul li {
-  list-style: none;
-}
-
-.kelompok {
-  border: var(--primary-color) solid 2px;
-  background-color: var(--secondary-color);
-  border-radius: 10px;
-  display: flex;
+.all_courses {
+    border: var(--primary-color) solid 2px;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 90%;
+    height: auto;
+    margin: 10px auto 100px auto;
+    flex-wrap: wrap;
+    padding: 30px 0;
+    gap: 60px;
 }
 
 .kotak {
-  background-color: #fff;
-  width: 300px;
-  height: 250px;
-  padding: 20px;
-  border: var(--primary-color) solid 1px;
-  border-radius: 20px;
-  margin: 30px auto;
+    background-color: #fff;
+    width: 275px;
+    height: 225px;
+    padding: 20px;
+    border: var(--primary-color) solid 1px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .kotak img {
-  width: 250px;
-  height: 150px;
+    align-self: center;
+    width: 225px;
+    height: 125px;
 }
 
 footer {
@@ -171,18 +176,9 @@ footer {
 }
 
 @media screen and (max-width: 914px) {
-  #all-courses {
+  .all-courses {
     width: 90%;
     margin: auto;
-  }
-
-  .kelompok {
-    border: var(--primary-color) solid 2px;
-    background-color: var(--secondary-color);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
   }
 
   .kotak {
@@ -200,7 +196,7 @@ footer {
   <body>
     <header>
       <div class="header__logo">
-        <img src="bahan\goofyahh.png" alt="logo" />
+        <img src="../bahan/goofyahh.png" alt="logo" />
         <h1 class="header__logotext">BearDCook</h1>
       </div>
 
@@ -209,153 +205,47 @@ footer {
           <li class="header__navItems"><a href="index.php">Home</a></li>
           <li class="header__navItems"><a href="courses.php">Courses</a></li>
           <li class="header__navItems"><a href="profil.php">Profil</a></li>
+          <li class="header__navItems"><a href="logout.php">logout</a></li>
         </ul>
       </nav>
-
-      <div class="btn">
-        <button class="header__loginbtn"><a href="login.php
-        ">Login</a></button>
-        <button class="header__signupbtn"><a href="register.php">Sign-Up</a></button>
-      </div>
     </header>
+
 
     <hr />
 
-    <div class="penikmat">
-      <h3>Lets search for foods and drinks</h3>
-      <div id="search-bar">
-        <div class="search-container">
-          <input type="text" id="search-input" placeholder="Search..." />
-          <button id="search-btn">Search</button>
+    <div class="cari">
+        <h3>Let's search for foods and drinks</h3>
+        <div id="search-bar">
+            <div class="search-container">
+                <form action="search.php" method="GET">
+                    <input type="text" id="search-input" name="q" placeholder="Search..." />
+                    <button type="submit" id="search-btn">Search</button>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
 
     <hr />
+    
+    <p class="judul_halaman">All Courses</p>
 
-    <section id="all-courses">
-      <div class="judul-courses">
-        <h1>Indonesian food</h1>
-        <ul>
-          <li><a href="">See more</a></li>
-        </ul>
-      </div>
-      <div class="kelompok">
-        <div class="kotak">
-          <img
-            src="https://img.freepik.com/free-photo/bbq-grill-cooked-with-hot-spicy-sichuan-pepper-sauce-is-chinese-herb_1150-13495.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=sph"
-            alt="gambar"
-          />
-          <p>Sate</p>
-        </div>
-        <div class="kotak">
-          <img
-            src="https://img.freepik.com/free-photo/delicious-goulash-ready-dinner_23-2149370849.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=sph"
-            alt="gambar"
-          />
-          <p>Rawon</p>
-          <p><a href="rawon.php
-          ">ayo lihat resepnya</a></p>
-        </div>
-        <div class="kotak">
-          <img
-            src="https://img.freepik.com/free-photo/delicious-goulash-ready-dinner_23-2149370900.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=sph"
-            alt="gambar"
-          />
-          <p>Rendang</p>
-          <p><a href="rendang.php
-          ">ayo lihat resepnya</a></p>
-        </div>
-      </div>
-      <div class="judul-courses">
-        <h1>American food</h1>
-        <ul>
-          <li><a href="">See more</a></li>
-        </ul>
-      </div>
-      <div class="kelompok">
-        <div class="kotak">
-          <img
-            src="https://img.freepik.com/free-photo/close-up-fried-chicken-drumsticks_23-2148682835.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=ais"
-            alt="gambar"
-          />
-          <p>Fried Chicken</p>
-        </div>
-        <div class="kotak">
-          <img
-            src="https://img.freepik.com/free-photo/grilled-cheeseburger-sesame-bun-with-fresh-toppings-generative-ai_188544-12325.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=sph"
-            alt="gambar"
-          />
-          <p>Grilled cheeseburger</p>
-        </div>
-        <div class="kotak">
-          <img
-            src="https://img.freepik.com/free-photo/top-view-french-fries-bowl-with-ketchup-sauce_23-2148701517.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=ais"
-            alt="gambar"
-          />
-          <p>French fries</p>
-        </div>
-      </div>
-      <div class="judul-courses">
-        <h1>Korean food</h1>
-        <ul>
-          <li><a href="">See more</a></li>
-        </ul>
-      </div>
-      <div class="kelompok">
-        <div class="kotak">
-          <img
-            src="https://img.freepik.com/free-photo/korean-instant-noodle-tteokbokki-korean-spicy-sauce-ancient-food_1150-42999.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=ais"
-            alt="gambar"
-          />
-          <p>Tteokbokki</p>
-        </div>
-        <div class="kotak">
-          <img
-            src="https://img.freepik.com/free-photo/cheesy-tokbokki-korean-traditional-food-black-board-background-lunch-dish_1150-42988.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=ais"
-            alt="gambar"
-          />
-          <p>Cheesy tokbokki</p>
-        </div>
-        <div class="kotak">
-          <img
-            src="https://img.freepik.com/free-photo/kimchi-ready-eat-black-plate_1150-35692.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=sph"
-            alt="gambar"
-          />
-          <p>Kimchi</p>
-        </div>
-      </div>
-      <div class="judul-courses">
-        <h1>Italian food</h1>
-        <ul>
-          <li><a href="">See more</a></li>
-        </ul>
-      </div>
-      <div class="kelompok">
-        <div class="kotak">
-          <img
-            src="https://img.freepik.com/free-photo/delicious-pasta-plate_23-2150690687.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=sph"
-            alt="gambar"
-          />
-          <p>Carbonara</p>
-          <p><a href="carbonara.php">ayo lihat resepnya</a></p>
-        </div>
-        <div class="kotak">
-          <img
-            src="https://img.freepik.com/free-photo/top-view-delicious-pasta-plate_23-2150690621.jpg?size=626&ext=jpg&ga=GA1.1.1581541846.1693224330&semt=sph"
-            alt="gambar"
-          />
-          <p>Spagetti</p>
-        </div>
-        <div class="kotak">
-          <img
-            src="bahan\_a8834d83-312d-46cd-a774-fd509e412895.jpeg"
-            alt="gambar"
-          />
-          <p>Osso Buco</p>
-        </div>
-      </div>
-    </section>
+    <div class="all_courses">
+        <?php
+        include '../koneksi.php';
+
+        $sql = "SELECT id_resep, judul, cover FROM resep";
+        $result = mysqli_query($mysqli, $sql);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<div class="kotak">';
+            echo '<img src="' . $row['cover'] . '" alt="gambar"/>';
+            echo '<p>' . $row['judul'] . '</p>';
+            echo '<p><a href="resep.php?id=' . $row['id_resep'] . '">ayo lihat resepnya</a></p>';
+            echo '</div>';
+        }
+        ?>
+    </div>
+    
 
     <footer>
       <p>&copy; 2023 Online Courses Platform. All rights reserved.</p>

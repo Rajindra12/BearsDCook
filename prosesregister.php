@@ -8,13 +8,13 @@ if(isset($_POST['Submit'])) {
     //echo($judul);
     // include database connection file
     include_once("koneksi.php");
-    
+
     // Insert user data into table
-    $result = mysqli_query($mysqli,
-    "INSERT INTO user(nama, username, password, email) VALUES ('$namas', '$usernames', '$passwords', '$emails')");
-    
-    // Show message when user added
-    // echo "Data added successfully. <a href='index.php'>View Data Buku</a>";
-    header("location: user/index.php");
+    $sql = "INSERT INTO user(nama, username, password, email) VALUES ('$namas', '$usernames', '$passwords', '$emails')";
+    $result = mysqli_query($mysqli, $sql);
+
+    $sql = "SELECT * FROM user WHERE username='$usernames' AND nama='$namas'";
+    $result = mysqli_query($mysqli, $sql);
+    header('location:index.php?Your account has benn ');
 }
 ?>

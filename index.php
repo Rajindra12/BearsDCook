@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
       :root {
         --primary-color: #61a3ba;
@@ -14,6 +17,7 @@
       * {
         margin: none;
         padding: none;
+        overflow: hidden;
       }
       body {
         background-image: linear-gradient(to top right, var(--greenish), var(--yellowish));
@@ -45,7 +49,9 @@
         margin-top: -10px;
       }
       .tulisan {
-        font-s
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        font-style: normal;
       }
       .tombol {
         display: flex;
@@ -74,8 +80,8 @@
       <div class="kotak">
         <div class="kotak-dalam">
           <div class="tulisan">
-            <h1>Selamat datang di BearsDcook</h1>
-            <h3>Silahkan Log-In dulu, kalau belum punya akun silahkan Sign-Up</h3>
+            <h1>Welcome to BearsDcook</h1>
+            <h3>Please log-in first, if you don't have an account, please sign-up</h3>
           </div>
           <div class="tombol">
             <a href="login.php"><button class="btnlogin">Log-In</button></a>

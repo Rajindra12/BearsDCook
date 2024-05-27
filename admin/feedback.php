@@ -66,16 +66,6 @@ header {
   color: #000;
 }
 
-.btn button {
-  padding: 15px 70px;
-  border: none;
-  border-radius: 6px;
-}
-
-.header__loginbtn {
-  color: var(--primary-color);
-}
-
 nav ul {
   list-style: none;
   padding: 0;
@@ -90,57 +80,6 @@ nav a {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
-}
-
-.hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 130px 144px;
-  background-color: var(--secondary-color);
-  position: relative;
-}
-
-.hero__text {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: start;
-}
-
-.hero__text-title {
-  font-size: 64px;
-  font-weight: 600;
-  line-height: 76px; /* 118.75% */
-}
-
-.hero__text-subtitle {
-  color: #4caf4f;
-  font-size: 64px;
-  font-weight: 600;
-  line-height: 76px;
-  word-wrap: break-word;
-}
-
-.hero__text-disc {
-  color: #717171;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
-  word-wrap: break-word;
-}
-
-.hero__text-desc {
-  color: #717171;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
-}
-
-.hero_image {
-  width: 40%;
 }
 
 .cari h3 {
@@ -180,75 +119,31 @@ nav a {
   background-color: var(--greenish);
 }
 
-#featured-courses {
-  background-color: var(--secondary-color);
-  text-align: left;
+.semua {
+  width: 80%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  margin: 7px auto 100px auto;
   gap: 10px;
 }
 
-.one {
-  display: flex;
-  gap: 25px;
-  background-color: #fff;
-  margin: 35px 20px 0px 20px;
-  padding: 50px;
-  border-radius: 5px;
-  border: var(--primary-color) solid 2px;
-  width: 700px;
+.title {
+  text-align: center;
+  margin: 20px;
 }
 
-.one img {
-  border: #000 solid 1px;
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 auto;
 }
 
-#featured-tulisan {
-  background-color: var(--secondary-color);
-  text-align: right;
-  padding: 25px 220px 25px 0px;
-  color: var(--primary-color);
-  text-decoration: none;
-}
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+  border-color: var(--greenish);
 
-.end {
-  display: flex;
-  align-items: center;
-  padding: 130px 144px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../bahan/_b77a65fe-023b-4ddb-abd3-4ab52d2a8478.jpeg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  height: 650px;
-  margin-bottom: 10px;
-}
-
-.end__text {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: start;
-  position: relative;
-  left: 100px;
-}
-
-.end__text-title {
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 76px; /* 118.75% */
-  color: var(--secondary-color);
-}
-
-.end__text-desc {
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
-  color: var(--greenish);
 }
 
 footer {
@@ -265,54 +160,51 @@ footer {
   </head>
   <body>
     <header>
-      <div class="header__logo">
-        <img src="../bahan/goofyahh.png" alt="logo" />
-        <h1 class="header__logotext">BearDCook</h1>
-      </div>
+        <div class="header__logo">
+          <img src="../bahan/goofyahh.png" alt="logo" />
+          <h1 class="header__logotext">BearDCook</h1>
+        </div>
 
-      <nav>
-        <ul class="header__nav">
-          <li class="header__navItems"><a href="index.php">Home</a></li>
-          <li class="header__navItems"><a href="feedback.php">Feedback</a></li>
-          <li class="header__navItems"><a href="admins.php">CRUD</a></li>
-        </ul>
-      </nav>
-
-      <div class="btn">
-        <button class="header__loginbtn"><a href="../user/login.php">Log-out</a></button>
-      </div>
+        <nav>
+          <ul class="header__nav">
+            <li class="header__navItems"><a href="index.php">Home</a></li>
+            <li class="header__navItems"><a href="feedback.php">Feedback</a></li>
+            <li class="header__navItems"><a href="admins.php">CRUD</a></li>
+            <li class="header__navItems"><a href="logout.php">logout</a></li>
+          </ul>
+        </nav>
     </header>
 
-    <hr>
+      <hr>
 
-    <h2>Feedback</h2>
-
-    <table>
-        <tr>
-            <th>ID_user</th>
-            <th>Nama</th>
-            <th>Komentar</th>
-            <th>Bintang</th>
-        </tr>
-        <?php
-            // Tampilkan data dari hasil query
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td class=id>" . $row["id_ulasan"] . "</td>";
-                    echo "<td>" . $row["id_ulasan"] . "</td>";
-                    echo "<td>" . $row["komentar"] . "</td>";
-                    echo "<td>" . $row["bintang"] . "</td>";
-                    // Tambahkan kolom lain sesuai kebutuhan
-                    echo "</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='3'>Tidak ada data yang ditemukan</td></tr>";
-            }
-
-        
+      <div class="semua">
+        <h2 class="title">Feedback</h2>
+  
+        <table>
+            <tr>
+                <th>ID_user</th>
+                <th>Nama</th>
+                <th>Komentar</th>
+                <th>Bintang</th>
+            </tr>
+            <?php
+              if (mysqli_num_rows($result) > 0) {
+                  while ($row = mysqli_fetch_assoc($result)) {
+                      echo "<tr>";
+                      echo "<td class=id>" . $row["id_ulasan"] . "</td>";
+                      echo "<td>" . $row["id_ulasan"] . "</td>";
+                      echo "<td>" . $row["komentar"] . "</td>";
+                      echo "<td>" . $row["bintang"] . "</td>";
+                      echo "</tr>";
+                  }
+              } else {
+                  echo "<tr><td colspan='3'>Tidak ada data yang ditemukan</td></tr>";
+              }
+  
+          
             ?>
         </table>
+      </div>
     </body>
 </html>
 

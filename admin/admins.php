@@ -5,6 +5,11 @@ require '../koneksi.php';
 // Lakukan query
 $query = "SELECT * FROM user";
 $result = mysqli_query($mysqli, $query);
+
+//tombol cari ditekan
+if (isset($_POST['cari'])) {
+    $result = cari($_POST['keyword']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -66,16 +71,6 @@ $result = mysqli_query($mysqli, $query);
         color: #000;
         }
 
-        .btn button {
-        padding: 15px 70px;
-        border: none;
-        border-radius: 6px;
-        }
-
-        .header__loginbtn {
-        color: var(--primary-color);
-        }
-
         nav ul {
         list-style: none;
         padding: 0;
@@ -92,10 +87,6 @@ $result = mysqli_query($mysqli, $query);
         font-weight: bold;
         }
 
-        .judul {
-            margin-top: 7px;
-        }
-
         .title {
             text-align: center;
             margin: 20px;
@@ -104,8 +95,7 @@ $result = mysqli_query($mysqli, $query);
         table {
             border-collapse: collapse;
             width: 80%;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 100px auto;
         }
 
         th, td {
@@ -141,34 +131,18 @@ $result = mysqli_query($mysqli, $query);
             font-weight: bold;
         }
 
-        .logout {
-            text-align: center;
-        }
-
-        .keluar {
-            margin: 0 auto; /* This centers the element horizontally */
-            /* You can also use margin: auto; to center both horizontally and vertically */
-            background-color: var(--yellowish);
-            padding: 5px;
-            border-radius: 5px;
-        }
-
-        .keluars {
-            text-align: center;
-            text-decoration: none;
-            color: #000;
-        }
-
-        .keluars:hover {
-            color: #FFF;
-            text-decoration: underline;
+        .search_add {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            gap: 25px;
         }
 
         .plus {
-            margin: 0 auto; /* This centers the element horizontally */
-            /* You can also use margin: auto; to center both horizontally and vertically */
             background-color: var(--yellowish);
-            padding: 5px;
+            padding: 5px 10px;
             border-radius: 5px;
         }
         
@@ -181,6 +155,23 @@ $result = mysqli_query($mysqli, $query);
         .pluss:hover {
             color: #FFF;
             text-decoration: underline;
+        }
+
+        .search_input {
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #B5C18E;
+        }
+        
+        .search_button {
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: var(--yellowish);
+        }
+
+        .gambar_profil {
+            width: 100px;
+            height: 100px;
         }
         </style>
     </head>
@@ -196,21 +187,30 @@ $result = mysqli_query($mysqli, $query);
           <li class="header__navItems"><a href="index.php">Home</a></li>
           <li class="header__navItems"><a href="feedback.php">Feedback</a></li>
           <li class="header__navItems"><a href="admins.php">CRUD</a></li>
+          <li class="header__navItems"><a href="logout.php">logout</a></li>
         </ul>
       </nav>
-
-      <div class="btn">
-        <button class="header__loginbtn"><a href="../user/login.php">Log-out</a></button>
-      </div>
     </header>
 
-        <hr class=pemabatas>
+    <hr class=pemabatas>
+    
+    <h2 class="title">Data Tabel</h2>
 
-        <h2 class="title">Data Tabel</h2>
+    <div class="search_add">
+        <div class="logout">
+            <button class="plus"><a href="add.php" class="pluss">Add user</a></button>
+        </div>
+        <form action="" method="post">
+            <input type="text" name="keyword" placeholder="Carilah user yang ingin anda cari...." size="50" class="search_input" autofocus autocomplete="off">
+            <button type="submit" name="cari" class="search_button">Cari</button>
+        </form>
+    </div>
 
+    <br>
         <table>
             <tr>
                 <th>ID_user</th>
+                <th>Foto</th>
                 <th>Nama</th>
                 <th>Username</th>
                 <th>Password</th>
@@ -225,6 +225,7 @@ $result = mysqli_query($mysqli, $query);
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
                     echo "<td class=id>" . $row["id_user"] . "</td>";
+                    echo "<td> <img src='../upload_foto/" . $row['foto'] . "' alt='foto' class='gambar_profil'> </td>";                    
                     echo "<td>" . $row["nama"] . "</td>";
                     echo "<td>" . $row["username"] . "</td>";
                     echo "<td>" . $row["password"] . "</td>";
@@ -242,11 +243,6 @@ $result = mysqli_query($mysqli, $query);
         
             ?>
         </table>
-        <br>
-        <div class="logout">
-            <button class="keluar"><a href="../user/login.php" class="keluars">Log-out</a></button>
-            <button class="plus"><a href="add.php" class="pluss">Add user</a></button>
-        </div>
     </body>
 </html>
 

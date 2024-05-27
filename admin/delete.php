@@ -1,13 +1,13 @@
 <?php
-include 'koneksi.php';
+include '../koneksi.php';
 if(isset($_GET['deleteid'])){
     $id=$_GET['deleteid'];
 
-    $sql="delete from `user` where id=$id";
+    $sql="delete from `user` where id_user=$id";
     $result=mysqli_query($mysqli,$sql);
     if($result){
         // echo "Deleted successfull";
-        header('location:admin/admins.php');
+        header('location:admins.php');
     }else{
         die(mysqli_error($mysqli));
     }

@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+    :root {
+  --primary-color: #61a3ba;
+  --secondary-color: #ffffdd;
+  --yellowish: #d2de32;
+  --greenish: #a2c579;
+}
     * {
   margin: none;
   padding: none;
 }
 
 body {
-  background-image: linear-gradient(to bottom right, #0A6847, #F3CA52);
+  background-image: linear-gradient(to bottom right, var(--greenish), var(--yellowish));
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -124,6 +130,7 @@ input::placeholder {
             placeholder="Nama"
             class="inpute"
             required
+            autofocus
             />
             <br>
             <label for="username">Username</label>

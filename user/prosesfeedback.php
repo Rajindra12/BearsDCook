@@ -1,11 +1,21 @@
 <?php
-if(isset($_POST['submit'])){
-    $komentar= $_POST['komentar'];
-    $username= $_POST['bintang'];
+include '../koneksi.php'; // Sambungkan ke database
 
-    include_once("../koneksi.php");
+session_start();
 
-    $result = mysqli_query($mysqli,"INSERT INTO feedback(komentar, bintang) VALUES ('$komentar', '$bintang')");
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $komentar = $_POST['komentar'];
+    $bintang = $_POST['bintang'];
+    $id_user = $_SESSION['iduser']; // Pastikan user sudah login
 
-    header("location: feedback.php");
+    // Simpan data ke database
+    $sql = "INSERT INTO feedback (id_user, komentar, bintang) 
+            VALUES ('$id_user', '$komentar', '$bintang')";
+    
+    if (mysqli_query($mysqli, $sql)) {
+        header('Location: index.php');
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+    }
 }
+?>

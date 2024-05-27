@@ -1,56 +1,3 @@
-<!-- Tentu, berikut adalah contoh halaman PHP yang dapat digunakan untuk menyambungkan tombol CRUD Update ke database. Saya asumsikan bahwa Anda memiliki halaman `update.php` dan bahwa Anda menggunakan formulir untuk memasukkan data yang akan diupdate. Pastikan untuk memeriksa keamanan dan validasi input sebelum menyimpan data ke database.
-
-```php -->
-<?php
-require 'koneksi.php';
-
-// Inisialisasi variabel
-$updateId = $_GET['updateid'] ?? null;
-
-// Jika updateId tidak ada, arahkan kembali ke halaman data
-if (!$updateId) {
-    header("Location: admins.php");
-    exit();
-}
-
-// Ambil data pengguna yang akan diupdate dari database
-$query = "SELECT * FROM user WHERE id = $updateId";
-$result = mysqli_query($mysqli, $query);
-
-if (!$result) {
-    die("Query failed: " . mysqli_error($mysqli));
-}
-
-if (mysqli_num_rows($result) == 0) {
-    die("Data tidak ditemukan");
-}
-
-$row = mysqli_fetch_assoc($result);
-
-// Proses form update
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nama = $_POST["nama"];
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $email = $_POST["email"];
-    $role = $_POST["role"];
-
-    // Update data ke database
-    $updateQuery = "UPDATE user SET nama='$nama', username='$username', password='$password', email='$email', role='$role' WHERE id=$updateId";
-
-    $updateResult = mysqli_query($mysqli, $updateQuery);
-
-    if (!$updateResult) {
-        die("Update failed: " . mysqli_error($mysqli));
-    }
-
-    // Redirect kembali ke halaman data setelah berhasil diupdate
-    header("Location: admins.php");
-    exit();
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -160,11 +107,62 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
+  <!-- Pastikan Anda sudah mengganti nama kolom dan tabel sesuai dengan struktur database Anda. Selain itu, pastikan untuk menambahkan fitur keamanan dan validasi input sesuai kebutuhan aplikasi Anda. -->
+  <?php
+  require '../koneksi.php';
+
+  // Inisialisasi variabel
+  $updateId = $_GET['updateid'] ?? null;
+
+  // Jika updateId tidak ada, arahkan kembali ke halaman data
+  if (!$updateId) {
+    header("Location: admins.php");
+    exit();
+  }
+
+  // Proses form update
+  if (isset($_POST['submit'])) {
+      $nama = $_POST["nama"];
+      $username = $_POST["username"];
+      $password = $_POST["password"];
+      $email = $_POST["email"];
+      $role = $_POST["role"];
+
+      // Update data ke database
+      $updateQuery = "UPDATE user SET nama='$nama', username='$username', password='$password', email='$email', role='$role' WHERE id_user='$updateId'";
+      $updateResult = mysqli_query($mysqli, $updateQuery);
+
+      if (!$updateResult) {
+          die("Update failed: " . mysqli_error($mysqli));
+      }
+
+      // Redirect kembali ke halaman data setelah berhasil diupdate
+      header("Location: admins.php");
+      exit();
+  } else {
+      // Ambil data pengguna yang akan diupdate dari database
+      $query = "SELECT * FROM user WHERE id_user = $updateId";
+      $result = mysqli_query($mysqli, $query);
+
+      if (!$result) {
+          die("Query failed: " . mysqli_error($mysqli));
+      }
+
+      if (mysqli_num_rows($result) == 0) {
+          die("Data tidak ditemukan");
+      }
+
+      $row = mysqli_fetch_assoc($result);
+  }
+
+  // Tutup koneksi database
+  mysqli_close($mysqli);
+  ?>
   <main>
     <div class="container">
       <h1>Update Data</h1>
       <br>
-      <form class="update" method="post">
+      <form action="update.php?updateid=<?php echo $updateId; ?>" class="update" method="post">
           <label for="nama">Nama:</label>
           <br>
           <input class="inpute" type="text" name="nama" value="<?php echo $row['nama']; ?>" required>
@@ -193,7 +191,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <option value="user" <?php echo ($row['role'] == 'user') ? 'selected' : ''; ?>>user</option>
           </select>
     
-          <button class="btn" type="submit">Update</button>
+          <button class="btn" name="submit" type="submit">Update</button>
           <br>
           <div class="forgot">
             <a href="admins.php" class="login">kembali</a>
@@ -203,11 +201,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </main>
 </body>
 </html>
-
-<?php
-// Tutup koneksi database
-mysqli_close($mysqli);
-?>
-```
-
-<!-- Pastikan Anda sudah mengganti nama kolom dan tabel sesuai dengan struktur database Anda. Selain itu, pastikan untuk menambahkan fitur keamanan dan validasi input sesuai kebutuhan aplikasi Anda. -->

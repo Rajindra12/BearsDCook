@@ -110,7 +110,7 @@
   <body>
     <main>
       <div class="container">
-        <h1>Sign-Up</h1>
+        <h1>Add Account</h1>
         <br />
         <div class="update">
           <form action="prosesadd.php" method="post">
