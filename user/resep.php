@@ -132,7 +132,7 @@
 
       .kotak_balik {
         width: 80%;
-        margin: 0 auto;
+        margin: 0 auto 100px auto;
       }
 
       .balik {
