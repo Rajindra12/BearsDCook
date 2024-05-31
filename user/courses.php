@@ -1,3 +1,21 @@
+<?php
+
+require '../koneksi.php';
+
+// Cek apakah form pencarian disubmit
+if (isset($_POST['cari'])) {
+    $keyword = $_POST['keyword'];
+    $query = "SELECT * FROM resep WHERE judul LIKE '%$keyword%' OR deskripsi LIKE '%$keyword%'";
+} elseif (isset($_GET['level'])) {
+    $level = $_GET['level'];
+    $query = "SELECT * FROM resep WHERE level = $level";
+} else {
+    $query = "SELECT * FROM resep";
+}
+
+$result = mysqli_query($mysqli, $query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -132,6 +150,37 @@ nav a {
     font-size: 30px;
 }
 
+.levels {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px;
+}
+
+.kumpulan_level {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.plus {
+    background-color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.pluss {
+    text-align: center;
+    text-decoration: none;
+    color: #FFF;
+}
+
+.pluss:hover {
+    text-decoration: underline;
+}
+
 .all_courses {
     border: var(--primary-color) solid 2px;
     background-color: var(--secondary-color);
@@ -210,16 +259,15 @@ footer {
       </nav>
     </header>
 
-
     <hr />
 
     <div class="cari">
         <h3>Let's search for foods and drinks</h3>
         <div id="search-bar">
             <div class="search-container">
-                <form action="search.php" method="GET">
-                    <input type="text" id="search-input" name="q" placeholder="Search..." />
-                    <button type="submit" id="search-btn">Search</button>
+                <form action="" method="post">
+                    <input type="text" name="keyword" placeholder="Search..." size="50" id="search-input" autofocus autocomplete="off">
+                    <button type="submit" name="cari" id="search-btn">search</button>
                 </form>
             </div>
         </div>
@@ -228,18 +276,38 @@ footer {
     <hr />
     
     <p class="judul_halaman">All Courses</p>
+    
+    <div class="levels">
+        <h4>Difficulty</h4>
+        <div class="kumpulan_level">
+            <div class="level">
+                <button class="plus"><a href="courses.php" class="pluss">All levels</a></button>
+            </div>
+            <div class="level">
+                <button class="plus"><a href="courses.php?level=1" class="pluss">level 1</a></button>
+            </div>
+            <div class="level">
+                <button class="plus"><a href="courses.php?level=2" class="pluss">level 2</a></button>
+            </div>
+            <div class="level">
+                <button class="plus"><a href="courses.php?level=3" class="pluss">level 3</a></button>
+            </div>
+            <div class="level">
+                <button class="plus"><a href="courses.php?level=4" class="pluss">level 4</a></button>
+            </div>
+            <div class="level">
+                <button class="plus"><a href="courses.php?level=5" class="pluss">level 5</a></button>
+            </div>
+        </div>
+    </div>
 
     <div class="all_courses">
         <?php
-        include '../koneksi.php';
-
-        $sql = "SELECT id_resep, judul, cover FROM resep";
-        $result = mysqli_query($mysqli, $sql);
-
         while ($row = mysqli_fetch_assoc($result)) {
             echo '<div class="kotak">';
             echo '<img src="' . $row['cover'] . '" alt="gambar"/>';
             echo '<p>' . $row['judul'] . '</p>';
+            echo '<p>' . 'Level: ' . $row['level'] . '</p>';
             echo '<p><a href="resep.php?id=' . $row['id_resep'] . '">ayo lihat resepnya</a></p>';
             echo '</div>';
         }

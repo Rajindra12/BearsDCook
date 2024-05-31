@@ -8,7 +8,6 @@ include "../koneksi.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BearsDCook</title>
     <style>
-        /* Your CSS styles */
         :root {
             --primary-color: #61a3ba;
             --secondary-color: #ffffdd;
@@ -106,6 +105,16 @@ include "../koneksi.php";
             height: auto;
             user-select: none;
         }
+        .upload_submit button {
+            color: #FFF;
+            background-color: var(--primary-color);
+            padding: 5px 10px;
+            border: none;
+            border-radius: 10px;
+        }
+        .upload_submit button:hover {
+            text-decoration: underline;
+        }
         footer {
             background-color: #333;
             color: #fff;
@@ -139,29 +148,39 @@ include "../koneksi.php";
             <div class="upload_resep">
                 <label for="cover">Cover :</label>
                 <br>
-                <input id="cover" type="file" name="cover">
+                <input id="cover" type="file" name="cover" required>
                 <br>
                 <label for="judul">Judul :</label>
                 <br>
-                <input id="judul" type="text" name="judul" autocomplete="off">
+                <input id="judul" type="text" name="judul" autocomplete="off" placeholder="Judul..." required>
                 <br>
                 <label for="deskripsi">Deskripsi :</label>
                 <br>
                 <!-- <input id="deskripsi" type="text" name="deskripsi"> -->
-                <textarea name="deskripsi" id="langkah" rows="10"></textarea>
+                <textarea name="deskripsi" id="langkah" rows="10" placeholder="Deskripsi..." required></textarea>
                 <br>
                 <label for="langkah">Langkah-langkah :</label>
                 <br>
                 <!-- <input id="langkah" type="text" name="langkah"> -->
-                <textarea name="langkah" id="langkah" rows="10"></textarea>
+                <textarea name="langkah" id="langkah" rows="10" placeholder="Langkah-langkah..." required></textarea>
                 <br>
-                <label for="vidio">Vidio :</label>
+                <label for="vidio">Url vidio (jika ada) :</label>
                 <br>
-                <input id="vidio" type="file" name="vidio">
+                <input id="vidio" type="text" name="vidio" placeholder="Url vidio..">
+                <br>
+                <label for="level">Level Difficulty:</label>
+                <br>
+                <select name="level" id="level" required>
+                  <option value="1">Level 1</option>
+                  <option value="2">Level 2</option>
+                  <option value="3">Level 3</option>
+                  <option value="4">Level 4</option>
+                  <option value="5">Level 5</option>
+                </select>
             </div>
             <div class="upload_submit">
                 <br>
-                <button type='submit' name='submit'>UPLOAD FOTO</button>
+                <button type='submit' name='submit'>Upload Recipe</button>
             </div>
         </form>
     </div>

@@ -167,10 +167,10 @@ footer {
 
         <nav>
           <ul class="header__nav">
-            <li class="header__navItems"><a href="index.php">Home</a></li>
-            <li class="header__navItems"><a href="feedback.php">Feedback</a></li>
-            <li class="header__navItems"><a href="admins.php">CRUD</a></li>
-            <li class="header__navItems"><a href="logout.php">logout</a></li>
+            <li class="header__navItems"><a href="index.php">Recipes</a></li>
+            <li class="header__navItems"><a href="feedback.php">Feedbacks</a></li>
+            <li class="header__navItems"><a href="admins.php">Users</a></li>
+            <li class="header__navItems"><a href="logout.php">Logout</a></li>
           </ul>
         </nav>
     </header>

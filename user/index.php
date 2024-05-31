@@ -2,11 +2,24 @@
 session_start();
 include_once '../koneksi.php';
 
+// Ensure id_ulasan is set and is a number
+$id_ulasan = isset($_GET['id_ulasan']) ? (int) $_GET['id_ulasan'] : 0;
+
 $query = "SELECT * FROM user WHERE id_user = '".$_SESSION['iduser']."'";
 $result = mysqli_query($mysqli, $query);
 
 if($result) {
     $row = mysqli_fetch_assoc($result);
+}
+
+// Query to count the number of feedbacks for each star rating
+$sqlCount = "SELECT bintang, COUNT(*) as count FROM feedback GROUP BY bintang";
+$resultCount = mysqli_query($mysqli, $sqlCount);
+
+$starCounts = array(1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0);
+
+while ($rowCount = mysqli_fetch_assoc($resultCount)) {
+    $starCounts[$rowCount['bintang']] = $rowCount['count'];
 }
 ?>
 <!DOCTYPE html>
@@ -17,245 +30,296 @@ if($result) {
     <title>BearsDCook</title>
     <style>
       :root {
-  --primary-color: #61a3ba;
-  --secondary-color: #ffffdd;
-  --yellowish: #d2de32;
-  --greenish: #a2c579;
-}
+        --primary-color: #61a3ba;
+        --secondary-color: #ffffdd;
+        --yellowish: #d2de32;
+        --greenish: #a2c579;
+      }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
 
-body {
-  font-family: sans-serif;
-  background-color: var(--secondary-color);
-}
+      body {
+        font-family: sans-serif;
+        background-color: var(--secondary-color);
+      }
 
-header {
-  background-color: var(--greenish);
-  padding: 20px 120px 20px 104px;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
+      header {
+        background-color: var(--greenish);
+        padding: 20px 120px 20px 104px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
 
-.header__logo {
-  display: flex;
-  align-items: center;
-}
+      .header__logo {
+        display: flex;
+        align-items: center;
+      }
 
-.header__logo img {
-  width: 35px;
-  height: 45px;
-  margin-right: 20px;
-}
+      .header__logo img {
+        width: 35px;
+        height: 45px;
+        margin-right: 20px;
+      }
 
-.header__nav {
-  display: flex;
-  gap: 20px;
-  padding-top: 10px;
-}
+      .header__nav {
+        display: flex;
+        gap: 20px;
+        padding-top: 10px;
+      }
 
-.header__navItems {
-  list-style: none;
-}
+      .header__navItems {
+        list-style: none;
+      }
 
-.header__navItems a {
-  text-decoration: none;
-  color: #000;
-}
+      .header__navItems a {
+        text-decoration: none;
+        color: #000;
+      }
 
-.btn button {
-  padding: 15px 25px;
-  border: none;
-  border-radius: 6px;
-}
+      .btn button {
+        padding: 15px 25px;
+        border: none;
+        border-radius: 6px;
+      }
 
-.header__loginbtn {
-  color: var(--primary-color);
-}
+      .header__loginbtn {
+        color: var(--primary-color);
+      }
 
-.header__signupbtn {
-  background-color: var(--primary-color);
-  color: #fff;
-}
+      .header__signupbtn {
+        background-color: var(--primary-color);
+        color: #fff;
+      }
 
-nav ul {
-  list-style: none;
-  padding: 0;
-}
+      nav ul {
+        list-style: none;
+        padding: 0;
+      }
 
-nav li {
-  display: inline;
-  margin-right: 20px;
-}
+      nav li {
+        display: inline;
+        margin-right: 20px;
+      }
 
-nav a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
-}
+      nav a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+      }
 
-.hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 70%;
-  margin: 0 auto;
-  gap: 10px;
-  padding: 100px 0;
-  /* padding: 130px 144px; */
-  background-color: var(--secondary-color);
-  position: relative;
-}
+      .hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 70%;
+        margin: 0 auto;
+        gap: 10px;
+        padding: 100px 0;
+        background-color: var(--secondary-color);
+        position: relative;
+      }
 
-.hero__text {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: start;
-}
+      .hero__text {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: start;
+      }
 
-.hero__text-title {
-  font-size: 64px;
-  font-weight: 600;
-  line-height: 76px; /* 118.75% */
-}
+      .hero__text-title {
+        font-size: 64px;
+        font-weight: 600;
+        line-height: 76px; /* 118.75% */
+      }
 
-.hero__text-subtitle {
-  color: #4caf4f;
-  font-size: 64px;
-  font-weight: 600;
-  line-height: 76px;
-  word-wrap: break-word;
-}
+      .hero__text-subtitle {
+        color: #4caf4f;
+        font-size: 64px;
+        font-weight: 600;
+        line-height: 76px;
+        word-wrap: break-word;
+      }
 
-.hero__text-disc {
-  color: #717171;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
-  word-wrap: break-word;
-}
+      .hero__text-disc {
+        color: #717171;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px; /* 150% */
+        word-wrap: break-word;
+      }
 
-.hero__text-desc {
-  color: #717171;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
-}
+      .hero__text-desc {
+        color: #717171;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px; /* 150% */
+      }
 
-.hero_image {
-  width: 40%;
-}
+      .hero_image {
+        width: 40%;
+      }
 
-.tentang {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 100px auto;
-  width: 70%;
-  gap: 10px;
-}
+      .tentang {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 100px auto;
+        width: 70%;
+        gap: 10px;
+      }
 
-.tentang_judul {
-  font-size: 20px;
-}
+      .tentang_judul {
+        font-size: 20px;
+      }
 
-.end {
-  display: flex;
-  align-items: center;
-  padding: 130px 144px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("../bahan/_b77a65fe-023b-4ddb-abd3-4ab52d2a8478.jpeg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  height: 650px;
-  margin-bottom: 10px;
-}
+      .end {
+        display: flex;
+        align-items: center;
+        padding: 130px 144px;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          url("../bahan/_b77a65fe-023b-4ddb-abd3-4ab52d2a8478.jpeg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        height: 650px;
+        margin-bottom: 10px;
+      }
 
-.end__text {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: start;
-  position: relative;
-  left: 100px;
-}
+      .end__text {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: start;
+        position: relative;
+        left: 100px;
+      }
 
-.end__text-title {
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 76px; /* 118.75% */
-  color: var(--secondary-color);
-}
+      .end__text-title {
+        font-size: 40px;
+        font-weight: 600;
+        line-height: 76px; /* 118.75% */
+        color: var(--secondary-color);
+      }
 
-.end__text-desc {
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
-  color: var(--greenish);
-}
+      .end__text-desc {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px; /* 150% */
+        color: var(--greenish);
+      }
 
-.feedback {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 100px auto 120px auto;
-  width: 70%;
-  gap: 10px;
-}
+      .feedback {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 100px auto 120px auto;
+        width: 70%;
+        gap: 10px;
+      }
 
-.feedback_judul {
-  font-size: 20px;
-}
+      .feedback_judul {
+        font-size: 20px;
+      }
 
-.feedback_form {
-  border: 3px solid var(--primary-color);
-  border-radius: 10px;
-  padding: 10px;
-  display: flex;
-  width: 100%;
-}
+      .feedback_form {
+        border: 3px solid var(--primary-color);
+        border-radius: 10px;
+        padding: 10px;
+        display: flex;
+        width: 100%;
+      }
 
-.feedback_tombol {
-  padding: 10px 15px;
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
+      .feedback_tombol {
+        padding: 10px 15px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
 
-#komentar {
-  width: 100%;
-  height: auto;
-  user-select: none;
-}
+      #komentar {
+        width: 100%;
+        height: auto;
+        user-select: none;
+      }
 
-#rating {
-  border: none;
-}
+      #rating {
+        border: none;
+      }
 
-footer {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
+      .feedback_summary {
+        border: 3px solid var(--primary-color);
+        border-radius: 10px;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
 
+      .feedback_orang {
+        border: 3px solid var(--primary-color);
+        border-radius: 10px;
+        padding: 25px;
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+      }
+
+      .feedback_kotak {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+      }
+
+      .profil {
+        display: flex;
+        flex-direction: row; 
+        font-weight: bold;
+        gap: 5px;
+      }
+
+      .foto {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      .komen {
+        font-size: 20px;
+      }
+
+      .rating {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+      }
+
+      .bintang {
+        width: 25px;
+        height: 25px;
+      }
+
+      footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
     </style>
   </head>
   <body>
@@ -298,7 +362,6 @@ footer {
         <h2>About BearsDCook</h2>
       </div>
       <div class="tentang_tulisan">
-        <!-- <p>This platform was created to ensure that anyone, regardless of their cooking skills, can learn to cook. By providing step-by-step instructions, video tutorials, and interactive classes, it aims to make the process enjoyable and accessible. Whether someone is a complete beginner or just looking to refine their techniques, this resource offers a wide range of recipes and cooking tips. The goal is to foster a community where everyone feels empowered to explore the culinary world, experiment with new dishes, and gain confidence in the kitchen.</p> -->
         <p>This website was created to ensure that anyone, regardless of their cooking skills, can learn to cook. By providing step-by-step instructions and aims to make the process enjoyable and accessible. Whether someone is a complete beginner or just looking to refine their techniques, this resource offers a wide range of recipes and cooking tips. The goal is to foster a community where everyone feels empowered to explore the culinary world, experiment with new dishes, and gain confidence in the kitchen.</p>
       </div>
     </div>
@@ -321,12 +384,12 @@ footer {
       </div>
       <div class="feedback_form">
         <form action="prosesfeedback.php" method="post">
-            <label for="komentar">Comment:</label>
+            <label for="komentar">Feedback:</label>
             <br>
-            <textarea type="text" id="komentar" name="komentar" row="10" autocomplete="off"></textarea>
+            <textarea type="text" id="komentar" name="komentar" row="10" autocomplete="off" required></textarea>
             <br>
             <label for="rating">Rating:</label>
-            <fieldset id="rating" class="rating">
+            <fieldset id="rating" class="rating" required>
               <label for="star1">1</label>
               <input type="radio" id="star1" name="bintang" value="1">
               <label for="star2">2</label>
@@ -341,6 +404,72 @@ footer {
             <br>
             <button class="feedback_tombol" type="submit" name="submit" id="submit">Submit</button>
         </form>
+      </div>
+
+      <div class="feedback_summary">
+        <p>Feedback Summary:</p>
+        <p><img src="../bahan/star.png" class="bintang"> = <?php echo $starCounts[1]; ?></p>
+        <p><img src="../bahan/star.png" class="bintang"><img src="../bahan/star.png" class="bintang"> = <?php echo $starCounts[2]; ?></p>
+        <p><img src="../bahan/star.png" class="bintang"><img src="../bahan/star.png" class="bintang"><img src="../bahan/star.png" class="bintang"> = <?php echo $starCounts[3]; ?></p>
+        <p><img src="../bahan/star.png" class="bintang"><img src="../bahan/star.png" class="bintang"><img src="../bahan/star.png" class="bintang"><img src="../bahan/star.png" class="bintang"> = <?php echo $starCounts[4]; ?></p>
+        <p><img src="../bahan/star.png" class="bintang"><img src="../bahan/star.png" class="bintang"><img src="../bahan/star.png" class="bintang"><img src="../bahan/star.png" class="bintang"><img src="../bahan/star.png" class="bintang"> = <?php echo $starCounts[5]; ?></p>
+      </div>
+      
+      <?php
+      $sql = "SELECT feedback.*, user.nama, user.foto 
+              FROM feedback
+              JOIN user ON feedback.id_user = user.id_user";
+      $result = mysqli_query($mysqli, $sql);
+      ?>
+      <div class="feedback_orang">
+        <?php
+          while ($row = mysqli_fetch_assoc($result)) {
+              echo '<div class="feedback_kotak">';
+                echo '<div class="profil">';
+                  echo "<img src=\"../upload_foto/" . $row["foto"] . "\" class=\"foto\">";
+                  echo '<p>' . $row['nama'] . '</p>';
+                echo '</div>';
+                echo '<p class="komen">' . $row['komentar'] . '</p>';
+                echo '<div class="rating">';
+                  for ($i = 0; $i < $row['bintang']; $i++):
+                      echo '<img src="../bahan/star.png" class="bintang">';
+                  endfor;
+                                // if($row['bintang'] == 1) {
+                //   echo '<div class="rating">';
+                //   echo '<img src="../bahan/star.png" class="bintang">';
+                //   echo '</div>';
+                // }elseif($row['bintang'] == 2) {
+                //   echo '<div class="rating">';
+                //   echo '<img src="../bahan/star.png" class="bintang">';
+                //   echo '<img src="../bahan/star.png" class="bintang">';
+                //   echo '</div>';
+                // }elseif($row['bintang'] == 3) {
+                //   echo '<div class="rating">';
+                //   echo '<img src="../bahan/star.png" class="bintang">';
+                //   echo '<img src="../bahan/star.png" class="bintang">';
+                //   echo '<img src="../bahan/star.png" class="bintang">';
+                //   echo '</div>';
+                // }elseif($row['bintang'] == 4){
+                //   echo '<div class="rating">';
+                //   echo '<img src="../bahan/star.png" class="bintang">';
+                //   echo '<img src="../bahan/star.png" class="bintang">';
+                //   echo '<img src="../bahan/star.png" class="bintang">';
+                //   echo '<img src="../bahan/star.png" class="bintang">';
+                //   echo '</div>';
+                // }else{
+                //   echo '<div class="rating">';
+                //   echo '<img src="../bahan/star.png" class="bintang">';
+                //   echo '<img src="../bahan/star.png" class="bintang">';
+                //   echo '<img src="../bahan/star.png" class="bintang">';
+                //   echo '<img src="../bahan/star.png" class="bintang">';
+                //   echo '<img src="../bahan/star.png" class="bintang">';
+                //   echo '</div>';
+                // }
+                echo '</div>';
+                echo '<br>';
+            echo '</div>';
+          }
+        ?>
       </div>
     </section>
 

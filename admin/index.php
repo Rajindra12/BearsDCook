@@ -2,8 +2,14 @@
 
 require '../koneksi.php';
 
-// Lakukan query
-$query = "SELECT * FROM resep";
+// Cek apakah form pencarian disubmit
+if (isset($_POST['cari'])) {
+    $keyword = $_POST['keyword'];
+    $query = "SELECT * FROM resep WHERE judul LIKE '%$keyword%' OR deskripsi LIKE '%$keyword%' OR `level` LIKE '%$keyword%'";
+} else {
+    $query = "SELECT * FROM resep";
+}
+
 $result = mysqli_query($mysqli, $query);
 ?>
 
@@ -98,8 +104,8 @@ $result = mysqli_query($mysqli, $query);
         }
 
         .kumpulan {
-            width: 80%;
-            margin: 0 auto;
+            width: 90%;
+            margin: 0 auto 100px auto;
         }
 
         table {
@@ -159,13 +165,21 @@ $result = mysqli_query($mysqli, $query);
             text-decoration: underline;
         }
 
+        .search_add {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            gap: 25px;
+        }
+
         .plus {
-            margin: 0 auto; 
             background-color: var(--yellowish);
-            padding: 5px;
+            padding: 5px 10px;
             border-radius: 5px;
         }
-        
+
         .pluss {
             text-align: center;
             text-decoration: none;
@@ -175,6 +189,23 @@ $result = mysqli_query($mysqli, $query);
         .pluss:hover {
             color: #FFF;
             text-decoration: underline;
+        }
+
+        .search_input {
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #B5C18E;
+        }
+
+        .search_button {
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: var(--yellowish);
+        }
+
+        .scrollable {
+            max-height: 100px;
+            overflow-y: auto;
         }
         </style>
     </head>
@@ -187,33 +218,41 @@ $result = mysqli_query($mysqli, $query);
 
         <nav>
           <ul class="header__nav">
-            <li class="header__navItems"><a href="index.php">Home</a></li>
-            <li class="header__navItems"><a href="feedback.php">Feedback</a></li>
-            <li class="header__navItems"><a href="admins.php">CRUD</a></li>
-            <li class="header__navItems"><a href="logout.php">logout</a></li>
+            <li class="header__navItems"><a href="index.php">Recipes</a></li>
+            <li class="header__navItems"><a href="feedback.php">Feedbacks</a></li>
+            <li class="header__navItems"><a href="admins.php">Users</a></li>
+            <li class="header__navItems"><a href="logout.php">Logout</a></li>
           </ul>
         </nav>
       </header>
       
-      <hr class=pemabatas>
+      <hr class="pembatas">
       
       <h2 class="title">Data Tabel</h2>
       
-      <div class="kumpulan">
-          <div class="logout">
-              <button class="plus"><a href="upload_resep.php" class="pluss">Add recipe</a></button>
-          </div>
+      <div class="search_add">
+            <div class="logout">
+                <button class="plus"><a href="upload_resep.php" class="pluss">Add Recipe</a></button>
+            </div>
+            <form action="" method="post">
+                <input type="text" name="keyword" placeholder="Carilah resep yang ingin anda cari...." size="50" class="search_input" autofocus autocomplete="off">
+                <button type="submit" name="cari" class="search_button">Cari</button>
+            </form>
+        </div>
   
           <br>
-  
+        <div class="kumpulan">
           <table>
               <tr>
                   <th>ID_resep</th>
+                  <th>Cover</th>
+                  <th>Vidio</th>
                   <th>ID_user</th>
                   <th>Judul</th>
                   <th>Deskripsi</th>
                   <th>Langkah</th>
                   <th>Waktu</th>
+                  <th>Level</th>
                   <th>Operation</th>
                   <!-- Tambahkan kolom lain sesuai kebutuhan -->
               </tr>
@@ -222,28 +261,35 @@ $result = mysqli_query($mysqli, $query);
               if (mysqli_num_rows($result) > 0) {
                   while ($row = mysqli_fetch_assoc($result)) {
                       echo "<tr>";
-                      echo "<td class=id>" . $row["id_resep"] . "</td>";
+                      echo "<td class='id'>" . $row["id_resep"] . "</td>";
+                      echo "<td><img src='../uploads/" . $row["cover"] . "' alt='Cover' width='100'></td>";
+                      echo "<td>";
+                      if (!empty($row['vidio'])) {
+                          echo "<iframe src='" . $row["vidio"] . "' frameborder='0' width='200' height='100' allowfullscreen></iframe>";
+                      } else {
+                          echo "No video";
+                      }
+                      echo "</td>";
                       echo "<td>" . $row["id_user"] . "</td>";
                       echo "<td>" . $row["judul"] . "</td>";
-                      echo "<td>" . $row["deskripsi"] . "</td>";
-                      echo "<td>" . $row["langkah"] . "</td>";
+                      echo "<td><div class='scrollable'>" . $row["deskripsi"] . "</div></td>";
+                      echo "<td><div class='scrollable'>" . $row["langkah"] . "</div></td>";
                       echo "<td>" . $row["waktu"] . "</td>";
-                      echo "<td>" . "<button class=update><a href=update.php?updateid=$row[id_resep] class=link>Update</a></button>" . " " . "<button class=delete><a href=delete.php?deleteid=$row[id_resep] class=link>Delete</a></button>" . "</td>";
+                      echo "<td>" . $row["level"] . "</td>";
+                      echo "<td><button class='update'><a href='editresep.php?updateid=" . $row["id_resep"] . "' class='link'>Update</a></button> <button class='delete'><a href='deleteresep.php?deleteid=" . $row["id_resep"] . "' class='link'>Delete</a></button></td>";
                       // Tambahkan kolom lain sesuai kebutuhan
                       echo "</tr>";
                   }
               } else {
-                  echo "<tr><td colspan='3'>Tidak ada data yang ditemukan</td></tr>";
+                  echo "<tr><td colspan='10'>Tidak ada data yang ditemukan</td></tr>";
               }
-  
-          
               ?>
           </table>
       </div>
     </body>
 </html>
 
-    <?php
-    // Tutup koneksi database
-    mysqli_close($mysqli);
-    ?>
+<?php
+// Tutup koneksi database
+mysqli_close($mysqli);
+?>

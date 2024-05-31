@@ -255,7 +255,7 @@ if($result) {
         <?php
         include '../koneksi.php';
 
-        $sql = "SELECT id_resep, judul, cover, id_user FROM resep";
+        $sql = "SELECT * FROM resep";
         $result = mysqli_query($mysqli, $sql);
 
         $resep_kotak = array(); // Array untuk menyimpan resep yang sesuai
@@ -272,6 +272,7 @@ if($result) {
                 echo '<div class="kotak">';
                 echo '<img src="' . $row['cover'] . '" alt="gambar"/>';
                 echo '<p>' . $row['judul'] . '</p>';
+                echo '<p>Level: ' . $row['level'] . '</p>';
                 echo '<p><a href="resep.php?id=' . $row['id_resep'] . '">ayo lihat resepnya</a></p>';
                 echo '</div>';
             }
